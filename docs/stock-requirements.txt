@@ -1,0 +1,56 @@
+Price: last price must be higher than 5.0
+Liquidity: Our maximal daily volume should be below 1% of the stocks 30 day ema of daily traded volume
+           Worst case scenario: sotck price=5.0, equity=200k, per pos=10k, reqd liquidity=(10k/5.0)*100=200k
+
+Possible pairs in a group of n members, assuming order in a pair is not important:
+ pairs = n * (n-1) / 2
+
+
+US Stocks:
+All filtered for volume, price, inspection date (prefilter_stocks.py), yahoo-all.us_symbols.filtered: 2360
+$ python2.7 tools/scan/create_pairs.py backtestdata/yahoo.us/yahoo.us.symbols.filtered | wc -l
+ 2785981
+
+ETFs:
+All filtered for volume, price, inspection date (prefilter_stocks.py), etfdb.all.noinv.nolev.symbols.filtered: 406
+$ python2.7 tools/scan/create_pairs.py backtestdata/etfdb/etfdb.all.noinv.nolev.symbols.filtered | wc -l
+   82622
+
+US Stocks + ETFs:
+$ python2.7 tools/scan/create_pairs.py backtestdata/etfdb/etfdb.all.noinv.nolev.symbols.filtered backtestdata/yahoo.us/yahoo.us.symbols.filtered | wc -l
+ 3829529
+
+Scan steps:
+ 1) prefilter_stocks.py
+ 2) create_pairs.py
+ 3) execute_backtest.py
+
+Laptop: 3 ips (iteration/backtest per second)
+  3 829 529 s / 3 iter/sec =  1 276 509 second
+  1 276 509 s / 3600 * 24 = 14.7 days = 2 weeks
+
+
+Performance:
+  Python 2 core: 0.6 iter / sec
+  Pypy 2 core: 3 iter / sec
+  Speedup: 5x
+
+Kanna estimate:
+  Previous run: 900k iters,                  1 week
+  Current run: 3.8m iters:                 4.2 weeks
+  pypy est1: 4.2 week / 5x speedup:        0.8 week
+  pypy est2: laptop 2 weeks / 4*more core: 0.5 week
+
+Parameters:
+  Lookback window: (10, 20, 40, 60)
+  Entry Z-Score: (1.0, 1.5, 2.0)
+
+  All comb: 3 * 4 = 12
+
+
+
+All should apply on the last 4 years (2009 - 2013):
+  - Sharpe > 1.5
+  - Max drawdown < 15%
+  - Longest drawdown duration < 100 days 
+

@@ -1,0 +1,31 @@
+Remove from paper:
+ - ALKS_MNTA: not frequent trades, $-1300 between 2013 - 2016 07
+ - AMX_CAC: not frequent trades, $-900 between 2014 - 2015. No trades since 2015 june
+ - ATW_GES: frequent trades but $-1600 between 2014 - 2016 06.
+ - BANC_STL: not frequent trades, $-950 at 2016
+ - CNX_BHI: not frequent trades
+ - KB_LFC: not frequent trades, one magic trade, rest is not profitable
+ - SLX_IIVI: not frequent trades, negative results
+ - AJG_WSO: not frequent trades
+ - AWK_MSEX: not profitable, collision with ARTNA_MSEX
+
+
+Optimize from paper:
+ - ABG_IX
+ - APU_SPH
+ - BRKR_ININ
+ - DHR_WAT
+ - MVF_BHK
+
+
+Add to real (adrenaline):
+ - XEL_ARTNA
+ - GABC_CAC
+
+Add to paper:
+ - ARTNA_MSEX
+ - SRCE_LKFN
+ - CHCO_WASH
+ - SYBT_EMCI
+ - SFNC_CAC
+ - ...

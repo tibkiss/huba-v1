@@ -1,0 +1,18 @@
+autodetach on
+startup_message off
+defscrollback 30000
+caption always "%{= kw}%?%-Lw%?%{+b kw}%n*%t%f %?(%u)%?%{= kw}%?%+Lw%? [%h]%?"
+hardstatus alwayslastline "%{+b kr}[ %H ] %{ky} Load: %l %-=%{kb} %c  %d.%m.%Y"
+
+vbell on
+
+screen -t zsh 0 zsh
+screen -t nasdaq1 1 /home/tibkiss/devel/workspace/stocks/huba/scripts/huba_mass_backtest.sh /home/tibkiss/devel/workspace/stocks/huba/backtestdata/nasdaq/all_pairs.1
+screen -t nasdaq2 2 /home/tibkiss/devel/workspace/stocks/huba/scripts/huba_mass_backtest.sh /home/tibkiss/devel/workspace/stocks/huba/backtestdata/nasdaq/all_pairs.2
+screen -t nasdaq3 3 /home/tibkiss/devel/workspace/stocks/huba/scripts/huba_mass_backtest.sh /home/tibkiss/devel/workspace/stocks/huba/backtestdata/nasdaq/all_pairs.3
+screen -t nasdaq4 4 /home/tibkiss/devel/workspace/stocks/huba/scripts/huba_mass_backtest.sh /home/tibkiss/devel/workspace/stocks/huba/backtestdata/nasdaq/all_pairs.4
+screen -t nasdaq5 5 /home/tibkiss/devel/workspace/stocks/huba/scripts/huba_mass_backtest.sh /home/tibkiss/devel/workspace/stocks/huba/backtestdata/nasdaq/all_pairs.5
+screen -t nasdaq6 6 /home/tibkiss/devel/workspace/stocks/huba/scripts/huba_mass_backtest.sh /home/tibkiss/devel/workspace/stocks/huba/backtestdata/nasdaq/all_pairs.6
+screen -t nasdaq7 7 /home/tibkiss/devel/workspace/stocks/huba/scripts/huba_mass_backtest.sh /home/tibkiss/devel/workspace/stocks/huba/backtestdata/nasdaq/all_pairs.7
+screen -t nasdaq8 8 /home/tibkiss/devel/workspace/stocks/huba/scripts/huba_mass_backtest.sh /home/tibkiss/devel/workspace/stocks/huba/backtestdata/nasdaq/all_pairs.8
+

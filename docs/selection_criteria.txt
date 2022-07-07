@@ -1,0 +1,5 @@
+All should apply on the last 4 years (2009 - 2013):
+  - Sharpe > 1.5
+  - Max drawdown < 15%
+  - Longest drawdown duration < 100 days 
+

@@ -1,0 +1,22 @@
+autodetach on
+startup_message off
+
+defscrollback 30000
+
+term screen-256color
+
+# caption always "%{= kw}%?%-Lw%?%{+b kw}%n*%t%f %?(%u)%?%{= kw}%?%+Lw%? [%h]%?"
+caption always "%{= Bk}%?%-Lw%?%{+b Wk}%n*%t%f %?(%u)%?%{= Bk}%?%+Lw%? [%h]%?"
+hardstatus alwayslastline "%{+b kr}[ %H ] %{ky} Load: %l %-=%{kb} %c  %d.%m.%Y"
+
+vbell on
+zombie cr
+
+screen -t Paper 0 /Users/tiborkiss/devel/workspace/stocks/huba/bin/huba_start_paper.sh
+screen -t Real  1 /Users/tiborkiss/devel/workspace/stocks/huba/bin/huba_start_real.sh
+screen -t ZSH 2 zsh
+
+split
+select 0 
+focus down
+select 1 

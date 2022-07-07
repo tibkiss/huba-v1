@@ -1,0 +1,2 @@
+BTDate,Version,Pairs,StartDate,EndDate,BarFreq,BarCount,DayCount,Sharpe,CAGR,CumRet,MaxDD,DDDur,LookbackWindow,EntryZScore,ExitZScore,ZScoreEvalFreq
+2014-12-06 14:29,v1.0-238-ge66b963,GY_UTX,2008-01-01,2013-12-31,1M,585187,1506,-0.37,-24.91,-81.96,92.98,1200,60,1.00,0.00,600

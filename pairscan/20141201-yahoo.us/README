@@ -1,0 +1,2 @@
+Based on the 2013's yahoo stock list by industry we create pairs which has enough liquidity to be used with huba.
+The SECTOR.pairs file contains the pairs by industry, the yahoo.us.symbols.filtered contains the stocks which are already filtered

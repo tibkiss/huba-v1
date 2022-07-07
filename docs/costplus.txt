@@ -1,0 +1,21 @@
+Volume (per month) <= 300,000 Shares: IB Commission per Share USD0.0035 Maximum per Order 0.5% of trade value
+ARCA exchange fee: Remove Liquidity USD 0.0030	Add Liquidity (USD 0.0021)
+NSCC, DTC Fees	USD0.00020 per share
+United States - Transaction Fees USD0.0000174*Value of Aggregate Sales
+NYSE Pass-Through Fees	IB Cost Plus Commissions*0.000175
+FINRA Pass-Through Fees	IB Cost Plus Commissions*0.00056
+FINRA Trading Activity Fee	USD 0.000119 * Quantity Sold
+
+
+From IB Representative:
+If you trade 226 shares for a price of 6.87, and you remove liquidity from ARCA, the fees will be as follows:
+
+IB Execution fee = 226(0035), or USD .7910
+ARCA Fee = .003(226) = .678
+Clearing Fee=.0002(226) = .0452
+Transaction fee (only on sales) = .0000174(226*6.87) = .0271
+NYSE Pass-through Fee = .000175(.791) = .0002
+FINRA PAss Through = .00056(.791) = .0005
+FINRA Trading Activity Fee (only on sales) = .000119(226) =. 0269
+
+As such, if you buy this and remove liquidity your total is USD 1.5149. If you sell it there is an additional USD.054.

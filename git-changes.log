@@ -1,0 +1,1269 @@
+* 4777e16 2017-08-02 Tibor Kiss  (HEAD -> master) Safely parse values from google finance output
+* 4da44c0 2017-07-11 Tibor Kiss  Remove KIRK_SPLS & ACC_BIP from real trading pairs
+* 55e048c 2017-06-22 Tibor Kiss  Disable logPrices in MTW_TEX. Also remove from the paper traded pairs, will work in ZP now
+* 6a3dcc8 2017-06-05 Tibor Kiss  Reduce leverage as other strategies has been deployed
+* 43a427c 2017-05-23 Tibor Kiss  Add kalmanFilterDelta Strategy Param
+* cd7df47 2017-05-18 Tibor Kiss  Add requests module to dependencies
+* 6224330 2017-05-18 Tibor Kiss  Workaround Yahoo Finance API Change: use google finance
+* fa14af8 2017-04-21 Tibor Kiss  Reduce backtesting pairs to 50 (no more quote boosting)
+* c078b62 2017-03-21 Tibor Kiss  Reduce paper trading leverage to free up capital for ib portfolio builder based strategy
+* a4d82a2 2017-03-21 Tibor Kiss  Add ST exception for CRH_MLM
+* 212d914 2017-03-21 Tibor Kiss  Add 0.005 as entry & exit order distance, increase zScoreUpdateBuffer to 2
+* cd5fdd5 2017-03-19 Tibor Kiss  Add exception for INSY_NBIX and MTW_TEX system tests
+* 72330ad 2017-03-19 Tibor Kiss  Get rid of DUG_PXH (backtest results are not promising)
+* 3a002d3 2017-03-19 Tibor Kiss  Remove dead pairs and add DUG_PXH and EGBN_JPM to real
+* 77fa51a 2017-03-19 Tibor Kiss  Reduce Real trading leverage to 1.0
+* b7968ef 2017-03-19 Tibor Kiss  Add tickpilot discovery script
+* 6f51cf8 2017-03-19 Tibor Kiss  Fix adfuller non-implementation on pypy
+* 70b4762 2017-03-19 Tibor Kiss  Add price increments where needed
+* b424afb 2017-03-17 Tibor Kiss  Increase log level of invalid share qties message
+* 7ea44d2 2017-03-17 Tibor Kiss  Enable LIMIT orders w/ 0 distance by default
+* 3c3e7cd 2017-03-17 Tibor Kiss  Strategy fix: move zScoreEvalFrequency to zScoreUpdateBuffer
+* 4a9bbe4 2017-03-17 Tibor Kiss  Fix warning messages
+* a359ef0 2017-01-24 Tibor Kiss  Update backtest.csv
+* 1fe7661 2017-01-24 Tibor Kiss  Update pairscan/start-pairscan.sh
+* cb56cd0 2017-02-21 Tibor Kiss  Reduce zScoreEvalFrequency for some of the paper trading pairs to 1
+* ec967c4 2017-02-21 Tibor Kiss  Add limitPriceIncrements to some of the paper traded pairs
+* 7cbec20 2017-02-21 Tibor Kiss  Enable limit based trading for real traded pairs
+* 550cd78 2017-02-10 Tibor Kiss  Add limitPriceIncrements as a parameter. Some of the Nasdaq stocks have 0.05 increment due to Nasdaq Tick Size Pilot
+* c1063e3 2017-02-10 Tibor Kiss  Enable limit order for Paper pairs which present in Real trading too
+* dbfee8b 2017-02-06 Tibor Kiss  Add log_warn to strategy/__init__.py
+* f786e6d 2017-02-04 Tibor Kiss  Fix exit order limit price calculation
+* a854183 2017-02-02 Tibor Kiss  Enable entry & exit order distance for the paper trading pairs
+* 86ca83f 2017-02-02 Tibor Kiss  Enable entryOrderDistance to some of the paper pairs
+* d1d8815 2017-02-02 Tibor Kiss  Add dummy config for AQN_UTL (don't have minute data to optimize)
+* 3b658f9 2017-02-02 Tibor Kiss  Price rounding for limit orders
+* e9d6e85 2016-08-22 Tibor Kiss  Limit order support
+* f8a1fc6 2017-01-24 Tibor Kiss  Add config for MAA_TITN
+* 2777c85 2017-01-23 Tibor Kiss  Fix position size calculation for second leg of the pair
+* 6071708 2017-01-23 Tibor Kiss  Get rid of expired pairs from paper: EDE_UTL. Adjust PPS_TITN to MMA_TITN (acquire adjust)
+* 0e54191 2017-01-22 Tibor Kiss  Move ARTNA_MSEX from real to paper (get rid of ES_MSEX & AEP_ARTNA due to collision from paper). Get rid of IHF_USPH from real (can't move due conflict with MDT_USP in paper). Add MTW_TEX, KIRK_SPLS & INSY_NBIX to real
+* 0b1933a 2017-01-22 Tibor Kiss  BRKR_ININ removed: ININ was acquired by a private company
+* 0faae71 2016-11-23 Tibor Kiss  Add ADBE_EFII, CXO_TCP, ACC_BIP to paper trading compare experiment. Get rid of NX_IR (no trade since a year)
+* f395421 2016-11-22 Tibor Kiss  Add EZA_EWH, KOF_FMX, BTI_PM to paper trade with overrides
+* cb19e63 2016-10-17 Tibor Kiss  Handle IILG to ILG rename
+* 5be98cf 2016-10-17 Tibor Kiss  Remove wild pair: FHCO_ABAX
+* 898f2ea 2016-10-15 Tibor Kiss  Move KOF_FMX from paper to live
+* 5de0b5b 2016-10-13 Tibor Kiss  Add optimized parameters for new pairs
+* 767e46e 2016-10-12 Tibor Kiss  Replace XEL_ARTNA with ARTNA_MSEX in live
+* 1386b6c 2016-10-12 Tibor Kiss  Reduce leverage to 1.9 (some close call on eod liquidation)
+* e609027 2016-10-12 Tibor Kiss  Add new paper trading pairs based on pairscan-201610 (tableau)
+* cbbc81e 2016-10-02 Tibor Kiss  Use GTC orders explicitly
+* ebe73fc 2016-10-02 Tibor Kiss  Update IDEA project files
+* 2017282 2016-10-02 Tibor Kiss  Schedule strategy initialization to 9:30
+* a88b8eb 2016-09-27 Tibor Kiss  Revert "Refactor beginning of day & end of day handling"
+* f1e2967 2016-09-26 Tibor Kiss  Refactor beginning of day & end of day handling
+* fbb0355 2016-09-26 Tibor Kiss  Add fetch_last_365_flexquery.sh
+* 1f82561 2016-09-25 Tibor Kiss  Reduce initial portfolio value to 10k in backtests
+* 1ada064 2016-08-02 Tibor Kiss  Fix texts on plot + add datetime to plot filename
+* aad8a7f 2016-08-02 Tibor Kiss  Fix plot creation under Linux
+* 70ca7a3 2016-08-02 Tibor Kiss  Fix typo in RESULTS.md
+* 3a666ea 2016-09-26 Tibor Kiss  Remove boilerplate
+* 1bdd509 2016-09-26 Tibor Kiss  Add TotalTrades, ProfitableTrades & UnprofitableTrades to CSV File
+* cc62d4a 2016-09-26 Tibor Kiss  Fix datetime creation. Note to self: named parameters are preferred
+* c3ea20f 2016-09-25 Tibor Kiss  HUBA-30: Add Sortino ratio
+* 68ec593 2016-09-18 Tibor Kiss  Use plain text log files
+* 6448902 2016-09-18 Tibor Kiss  Add logstash-huba-test-log.conf
+* daf77a8 2016-09-18 Tibor Kiss  First version of logstash files
+* b13b6ad 2016-09-17 Tibor Kiss  Fix tws addresses 2nd try
+* c8dc50c 2016-09-17 Tibor Kiss  Fix tws addresses
+* 271a22d 2016-09-17 Tibor Kiss  Bump numpy & matplotlib version
+* 9d774ba 2016-09-17 Tibor Kiss  Use tws-paper and tws-real as tws connection strings
+* cb39cc7 2016-09-17 Tibor Kiss  Reduce sleep time in BrokerAgent
+* 9b019cc 2016-09-17 Tibor Kiss  Add all dependencies th requirements-python.txt
+* df93227 2016-09-17 Tibor Kiss  Update pytest version to 2.9.2
+* fa3c8bb 2016-09-07 Tibor Kiss  Pass thru IBConnectionException
+* dec52c0 2016-09-05 Tibor Kiss  Update CSV results
+*   72981d0 2016-08-16 Tibor Kiss  Merge branch 'master' of eiger-dyn:/data/git/huba
+|\  
+| * e141537 2016-08-16 Tibor Kiss  Extend debug logging
+* | c75eea3 2016-08-16 Tibor Kiss  Fix CSV writing at end of day
+|/  
+* 107d39c 2016-08-16 Tibor Kiss  Extra ZScore calculation details added to debug log
+* dc38ff3 2016-08-16 Tibor Kiss  Check if CSV is closed during daily dumping
+* b396545 2016-08-13 Tibor Kiss  Fix bar inclusion (yet again - #3)
+* a1d9814 2016-08-13 Tibor Kiss  Fix bar inclusion (yet again)
+* fc53e8b 2016-08-13 Tibor Kiss  Fix bar inclusion printout :S
+* d50a4bd 2016-08-13 Tibor Kiss  Fix bar inclusion
+* 84bcd3b 2016-08-13 Tibor Kiss  Fix reporting the number of bars
+* be44b6a 2016-08-13 Tibor Kiss  Fix previous commit
+* f0de99e 2016-08-13 Tibor Kiss  Fix logging message
+* 6c37c8a 2016-08-13 Tibor Kiss  HUBA-20: Ability to load CSVs from multiple sources (iqfeed & ib)
+* dd66553 2016-08-13 Tibor Kiss  Adapt testcase to the new brokeragent.run routine
+* abcbe44 2016-08-13 Tibor Kiss  Fix real shell script path in bin/huba_live_session.sh
+* b9bf648 2016-08-13 Tibor Kiss  Move huba start to huba_start_{real|paper}.sh
+* f4a2678 2016-08-13 Tibor Kiss  HUBA-34: Speed up IB Bar delivery
+* fb224e6 2016-08-13 Tibor Kiss  HUBA-34: Initialize the strategy at day open (9:30)
+* 43caa37 2016-08-13 Tibor Kiss  HUBA-31: Fix IPython embedding
+* cd1d170 2016-08-13 Tibor Kiss  Fix None value error ir tracing
+* 49d03b4 2016-08-10 Tibor Kiss  Fix typo in brokeragent.py
+* 9a6ab71 2016-08-10 Tibor Kiss  Fix getNextLineNumber handling in tracing
+* bc49ac3 2016-08-10 Tibor Kiss  Fix onEveryHour in brokeragent.py
+* 4615107 2016-08-10 Tibor Kiss  Reduce loglevel to DEBUG of bar recording message
+* f8dca80 2016-08-10 Tibor Kiss  tmux support in bin/huba_stop.sh
+* 25a2de2 2016-08-10 Tibor Kiss  Update trade logs
+* ad797da 2016-08-10 Tibor Kiss  Remove colonfrom StatArb book filename
+* fe743a1 2016-08-10 Tibor Kiss  jtsconfig.xml for the new paper trading account
+* 1b73172 2016-08-10 Tibor Kiss  Update jts.ini
+* 9cef0b5 2016-08-10 Tibor Kiss  Do not use bzip2 files for huba test logs
+* a9c611f 2016-08-10 Tibor Kiss  Support bz2 compressed log files in monitor_logs.py
+* f5aca92 2016-08-09 Tibor Kiss  HUBA-22: Add flush to csv_writer
+*   2bdf0e1 2016-08-09 Tibor Kiss  Merge branch 'master' of eiger-dyn:/data/git/huba
+|\  
+| * 2a6e047 2016-08-09 Tibor Kiss  Fix Too Many open files in live trading when storing the equities
+* | e7ea907 2016-08-09 Tibor Kiss  Merge branch 'master' of eiger-dyn:/data/git/huba
+|\| 
+| * a7757c6 2016-08-09 Tibor Kiss  Use elgin820 paper trading account
+* | d54288e 2016-08-09 Tibor Kiss  Update crontab to use tmux based live script
+|/  
+* 4fd95ad 2016-08-09 Tibor Kiss  Fix huba_live_session_iterm.scpt
+* 18c1583 2016-08-09 Tibor Kiss  Include extra file endings for logfiles in gitignore
+* cf67e14 2016-08-09 Tibor Kiss  HUBA-24: Replace screen with tmux in live trading
+* c510d95 2016-08-09 Tibor Kiss  Rename huba_screen_start_iterm.scpt -> bin/huba_live_session_iterm.scpt
+* d72c173 2016-08-09 Tibor Kiss  Use huba_live_session.sh in huba_screen_start_iterm.scpt
+* c48c01d 2016-08-09 Tibor Kiss  Fix tracing for IB emitted events
+* 02d51fd 2016-08-09 Tibor Kiss  Fix eiger's address for live test sessions
+* bc6294a 2016-08-09 Tibor Kiss  HUBA-23: Compress log files on the flight
+* 08f61dc 2016-08-02 Tibor Kiss  HUBA-16: Add tracing module
+* f129cf1 2016-08-01 Tibor Kiss  Fix ROI calculation for intra-day trades
+*   5d31265 2016-08-01 Tibor Kiss  Merge branch 'master' of ssh://eiger-dyn/data/git/huba
+|\  
+| * 27dde6e 2016-08-01 Tibor Kiss  Add CXO_TCP's drawdown to acceptable range
+| * 495d6ed 2016-08-01 Tibor Kiss  Removed IBM_GLD as GLD is ambiguous query
+| * 0919214 2016-08-01 Tibor Kiss  Update trade log
+| * 51f3142 2016-08-01 Tibor Kiss  Backtest between '14 and '17 in system test
+| * 2d58442 2016-08-01 Tibor Kiss  Optimize (almost) all pairs in config
+| * 5366e9f 2016-08-01 Tibor Kiss  Add all pair optimization results
+| * 5fc0ebf 2016-07-31 Tibor Kiss  Move NX_IR ALGN_CVG IILG_FLY CEB_GPX from real to paper
+* | 344d7ef 2016-08-01 Tibor Kiss  Nasty one: explicitly close CSV writer, otherwise the loadCSV might fail under pypy
+|/  
+* 789b1ec 2016-07-31 Tibor Kiss  Adding backtest-paper-pair-optimization-160730.csv
+* ec61252 2016-07-31 Tibor Kiss  Adding backtest-real-pair-optimization-160730.sorted.csv
+* 60c92f6 2016-07-31 Tibor Kiss  Instantiate CSV Fd only in live mode
+* 7b90786 2016-07-31 Tibor Kiss  Remove saveBars from StatArb test
+* 63d8e37 2016-07-31 Tibor Kiss  Mock CSV Writer in BrokerAgent test
+* 22d2617 2016-07-31 Tibor Kiss  Add optimizations for missing ETF pairs
+* 51eb4f4 2016-07-31 Tibor Kiss  Fix live bar to CSV writer: include all the processed bars
+* 9de9e8d 2016-07-31 Tibor Kiss  Add ib_mkt_data experiment
+* d031cb1 2016-07-31 Tibor Kiss  Update backtest.csv
+* a23ad67 2016-07-31 Tibor Kiss  Update IDEA project files
+* e7192aa 2016-07-31 Tibor Kiss  Add 3rdparty dependencies
+* ddb4110 2016-07-31 Tibor Kiss  Add reqMarketData.txt
+* 9106b25 2016-07-31 Tibor Kiss  Handle subscribeMarketData in test
+* dbeb232 2016-07-31 Tibor Kiss  Optimize real pairs
+* 5ee33e8 2016-07-31 Tibor Kiss  Add intermediate results to gitignore
+* 63157f5 2016-07-31 Tibor Kiss  Add CVCO_GVA parameters to config
+* 4610b83 2016-07-31 Tibor Kiss  Remove dead pairs from paper trading
+* c935c6f 2016-07-31 Tibor Kiss  Optimize paper trading pairs
+* 1325d0d 2016-07-31 Tibor Kiss  Add russell pairs
+* 4d829c0 2016-07-31 Tibor Kiss  Add russell 3000 insturment list
+* 8131ce6 2016-07-31 Tibor Kiss  Add russell-3000 instruments
+* 54ac6ec 2016-07-31 Tibor Kiss  Add pairscan results
+* 9f7d682 2016-07-31 Tibor Kiss  Fix pairlist file in start-pairscan-validation.sh
+* 8e5b291 2016-07-31 Tibor Kiss  Add start-pairscan-plot-generation.sh
+* e98b4c7 2016-07-31 Tibor Kiss  Add nasdaq & nyse company list to docs
+* f0fb4f7 2016-07-30 Tibor Kiss  Add new pairs based on SP500 & Russell3000 PairScan results
+* c07f7bd 2016-07-30 Tibor Kiss  add statsmodels to requirements-python.txt
+* 7b8a7cb 2016-07-30 Tibor Kiss  Add filter-processed-pairs.sh
+* af4f79e 2016-07-30 Tibor Kiss  modernize prefilter_stocks.py
+* 511417f 2016-07-30 Tibor Kiss  Fix CAGR calculation in case of negative numbers
+* d6d8a49 2016-07-30 Tibor Kiss  Add pairscan-validation script
+* a2eaf87 2016-07-30 Tibor Kiss  Add logPrices to optimization
+*   3ddd7bc 2016-07-29 Tibor Kiss  Merge branch 'master' of ssh://eiger-dyn/data/git/huba
+|\  
+| * 9604f79 2016-07-22 Tibor Kiss  Added XEL_ARTNA to Real, ARTNA_MSEX, SRCE_LKFN, CHCO_WASH, SYBT_EMCI, SFNC_CAC to Paper
+| * 8f5eabc 2016-07-15 Tibor Kiss  Backtest list cleanup
+* | 15b92a0 2016-07-29 Tibor Kiss  Using IB Market bars
+* | 897da84 2016-07-24 Tibor Kiss  Add Hurst exponent & ADFuller support
+|/  
+*   319c89f 2016-07-21 Tibor Kiss  Merge branch 'master' of eiger-dyn:/data/git/huba
+|\  
+| * 06188e2 2016-07-21 Tibor Kiss  Action items for 2016 07 pair scan
+| * 1c88388 2016-07-14 Tibor Kiss  Fix CAGR calculation
+* | ffc4846 2016-07-21 Tibor Kiss  Remove ALKS_MNTA, AMX_CAC, ATW_GES, BANC_STL, CNX_BHI, KB_LFC, SLX_IIVI, AJG_WSO, AWK_MSEX from actively paper traded pairs
+* | e27d881 2016-07-21 Tibor Kiss  TAL merges with Triton as TRTN
+|/  
+*   b04b969 2016-07-14 Tibor Kiss  Merge branch 'master' of ssh://eiger-dyn/data/git/huba
+|\  
+| * 3c2bff8 2016-07-10 Tibor Kiss  Add start and end-date to start-pairscan.sh
+| * 3fb7d21 2016-07-10 Tibor Kiss  Add scan log files to gitignore
+| * 85abe4c 2016-07-10 Tibor Kiss  Rename sp500 base list to _lst
+| * 87c44b1 2016-07-10 Tibor Kiss  use tag in start-pairscan.sh
+| * 396a7af 2016-07-10 Tibor Kiss  Fix feed loading
+| * dd1c3b4 2016-07-10 Tibor Kiss  Use critical logging level to display performance and run creation count
+* | 8e192f0 2016-07-14 Tibor Kiss  Fix cumReturn calculation in analyzer
+|/  
+* 8aa8c43 2016-07-14 Tibor Kiss  Unkown sector support to create_pairs script
+* eae2798 2016-07-14 Tibor Kiss  Add unknownsector to pair scan
+* b744df1 2016-07-10 Tibor Kiss  Rework loadBacktestFeed
+* 7054683 2016-07-10 Tibor Kiss  Add totalTrades to analyzer
+* cf850f1 2016-07-10 Tibor Kiss  Fix trade analyzer 2
+* 3d678a7 2016-07-10 Tibor Kiss  Fix trade analyzer
+* 527978b 2016-07-10 Tibor Kiss  Check bar count at cummulative return calculation
+* 508872d 2016-07-10 Tibor Kiss  Do not throw exception from brokeragent
+* 2579c4f 2016-07-10 Tibor Kiss  Enable penny stock trading
+*   5c6b995 2016-07-10 Tibor Kiss  Merge branch 'master' of ssh://eiger-dyn/data/git/huba
+|\  
+| * 688d00c 2016-07-10 Tibor Kiss  Use critical log level to print backtest progress
+| * 18b0ae1 2016-07-10 Tibor Kiss  Add start-pairscan.sh
+* | d83beb6 2016-07-10 Tibor Kiss  Check for loaded bar length at backtest
+|/  
+* 7c5c86b 2016-07-10 Tibor Kiss  Enable using multiple files in mass backtest
+* 5ff22ee 2016-07-09 Tibor Kiss  Fix bar download: only allow 1D dl
+* 9cb924f 2016-07-09 Tibor Kiss  Use common earliest timestamp for backtests
+* e996fb6 2016-07-08 Tibor Kiss  Restructure pairscan hierarchy
+* a0ffa37 2016-07-09 Tibor Kiss  Do not download data for iqfeed
+* 44b5d37 2016-07-08 Tibor Kiss  Adding Statistical Arbitrage and Algorithmic Trading: Overview and Applications.pdf
+* 531ff02 2016-07-08 Tibor Kiss  Add HUBA apps
+* e848292 2016-07-08 Tibor Kiss  Add earnings_data_model.txt
+* d72c847 2016-07-08 Tibor Kiss  Add icons
+* cbb68ac 2016-07-08 Tibor Kiss  Add vncloc file
+* d27cff0 2016-07-08 Tibor Kiss  Add docs/performance.txt
+* 363a002 2016-07-08 Tibor Kiss  Add HUBA-Pair_Reviews.xlsx
+* fa44a36 2016-07-08 Tibor Kiss  Add HUBA-KalmanFilter-Experiment.xlsx
+* c829586 2016-07-08 Tibor Kiss  add logs/backtest-paper-pairs.csv
+* cb2e12d 2016-07-08 Tibor Kiss  Adding SQL Console experiments
+* 41723cf 2016-07-08 Tibor Kiss  Adding validation.txt results
+* 7872134 2016-07-08 Tibor Kiss  Move scratch.py to experiments folder
+* a9cf9e2 2016-07-08 Tibor Kiss  Add candidates.txt
+* 17c7308 2016-07-08 Tibor Kiss  Get rid of old pairscan results
+* 0200276 2016-07-08 Tibor Kiss  Add trending-tweets.py
+* 93f3cf8 2016-07-08 Tibor Kiss  Add pairscan results
+* 2abbe59 2016-07-08 Tibor Kiss  requirements-python.txt added
+* 061f52a 2016-07-08 Tibor Kiss  include idea files in gitignore
+* 97f1794 2016-07-08 Tibor Kiss  Add pair scan input for 20160704 scan frenzy
+* 0d66db0 2016-07-08 Tibor Kiss  Fix printout in creating message
+* babe6d6 2016-07-08 Tibor Kiss  Use proper filename in create_pairs_by_sector.py
+* 6422175 2016-07-08 Tibor Kiss  Add scan/create_pairs_by_sector.py file
+* c40df60 2016-07-08 Tibor Kiss  Disable db handler
+* 8425194 2016-07-08 Tibor Kiss  Add lookbackWindow, entryZScore, zScoreEvalFreq to optimizer
+*   727df33 2016-07-07 Tibor Kiss  Merge branch 'master' of ssh://eiger-dyn/data/git/huba
+|\  
+| * 6226679 2016-07-05 Tibor Kiss  Add exception for LH_STE and CXO_TCP in system test
+| * 55800fa 2016-07-05 Tibor Kiss  Update csv log files
+| * 84d70a7 2016-07-05 Tibor Kiss  Remove old screenshots
+| * e5b1fe8 2016-07-05 Tibor Kiss  Adjust traded pairs
+* | fddd166 2016-07-07 Tibor Kiss  Add Kelly Formula experiment
+* | ee622ea 2016-07-07 Tibor Kiss  Add experiment logs
+|/  
+* 2c2baf7 2015-12-28 Tibor Kiss  Fix checkEarnings testcase: support added for disabled earnings cease fire
+* 5e7f9fb 2015-12-28 Tibor Kiss  Disable earningsCeaseFire by default. Was not providing enough and consistent gains in backtest for real traded pairs
+* 2b75334 2015-12-28 Tibor Kiss  Fix pair printout in plotted charts
+* 501db0a 2015-12-28 Tibor Kiss  Move AMG_CFNL to paper trading: started to fall apart, no trades since 6 months now
+* df32be8 2015-12-01 Tibor Kiss  Fix testCheckEarnings testcase. The StatArbParms should not be mocked!
+* 134b04d 2015-11-30 Tibor Kiss  Do not start ipython console in live trading by default
+* d887fc2 2015-11-30 Tibor Kiss  Remove dead pairs from paper trade: APH_EXLP, BJRI_SMTC, CMC_TRAK
+* c19995f 2015-10-21 Tibor Kiss  Add Log Prices option to strategy
+* 618f549 2015-09-28 Tibor Kiss  Log prices - test 2
+* 2475594 2015-09-28 Tibor Kiss  Log prices - test 1
+* cf983b1 2015-10-19 Tibor Kiss  fix earnings ceasefire optimization option
+* 3255d83 2015-10-19 Tibor Kiss  Updating huba pycharm files
+* 27d550c 2015-10-19 Tibor Kiss  Optimizing for earnings cease fire
+* 22509ec 2015-10-18 Tibor Kiss  Enable earnings check in backtest (finally!)
+* 45d1aa8 2015-10-18 Tibor Kiss  Include all the strategy parameters in backtest.csv
+* e007e84 2015-10-18 Tibor Kiss  Refactor StatArbStrategyParms to StatArbParams
+* d0a47d5 2015-10-18 Tibor Kiss  Pimp up optimization: it takes the StatArbConfig's parameters as defaults now
+* 60a485b 2015-10-18 Tibor Kiss  Close HTTP Connection explicitly on yahoo_earnings fetch script
+* 9ea77a2 2015-10-18 Tibor Kiss  Simplify low/high/volume calculation in reduceBars
+* 82e610e 2015-10-17 Tibor Kiss  Refactoring final step
+* 22f4f24 2015-10-17 Tibor Kiss  Rewrite huba start script path in apple script
+* 61c7a49 2015-10-17 Tibor Kiss  Update crontab before re-wire to bin/
+* 759ada1 2015-10-17 Tibor Kiss  Split scripts into bin/ and etc/
+* 5255d6a 2015-10-17 Tibor Kiss  Virtualenv support
+* d089787 2015-10-17 Tibor Kiss  Moving to py.test
+* bd1fd49 2015-10-17 Tibor Kiss  Fixing testcases
+* 4205adc 2015-10-17 Tibor Kiss  Use earnings db in backtest \o/
+* 86472b9 2015-10-17 Tibor Kiss  Use the DBHandler in Yahoo Downloader
+* 4c9a14f 2015-10-17 Tibor Kiss  Add 8k earnings to db
+* f3f9267 2015-10-16 Tibor Kiss  Add DB Handler class with testcase
+* a201beb 2015-10-16 Tibor Kiss  Finalize DB structure
+* 701e359 2015-10-14 Tibor Kiss  Fixing mock issues under pypy :O
+* 330c51c 2015-10-11 Tibor Kiss  HUBA DB for company events.
+* fbef06a 2015-10-01 Tibor Kiss  Adding 3rdparty dep: python-yql
+* e5a0292 2015-10-01 Tibor Kiss  Adding pypy requirements.txt file
+* 6ea791f 2015-09-29 Tibor Kiss  Extend logging
+* 34b1f26 2015-09-29 Tibor Kiss  Logging improvement
+* 1b0909d 2015-09-28 Tibor Kiss  Remove comment from prefilter_stocks.py
+* d8b3adc 2015-09-28 Tibor Kiss  Set default backtest till end of 2014
+* fc37512 2015-09-26 Tibor Kiss  Add performance reporting (bars/sec)
+* c5e4788 2015-09-04 Tibor Kiss  Add performance benchmark exemption to system test
+* 826805f 2015-09-04 Tibor Kiss  Fix patching in statarb testcase.
+* 3bf540f 2015-09-02 Tibor Kiss  Change trading pairs
+* e19cc0e 2015-09-02 Tibor Kiss  Updating csv result files
+* e1e74af 2015-09-02 Tibor Kiss  Check earnings only in live trading
+* 72faa9f 2015-06-13 Tibor Kiss  Add BTI_PM and XRAY_MR to Live, move CNX_BHI to paper. Increase real leverage to 2.0
+* 8d644b6 2015-05-16 Tibor Kiss  Show the full earnings table on command line use
+* 4eb9744 2015-05-11 Tibor Kiss  Add yql-0.7.7-py2.7.egg to 3rdparty
+*   9301848 2015-05-11 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-dyn/huba
+|\  
+| * cacdc1d 2015-01-28 Tibor Kiss  Removing NIB_COV as COV is out of business as of 2015. 01. 26.
+* | 643e597 2015-05-11 Tibor Kiss  Add AWK_MSEX to paper trading pairs
+* | 25523ec 2015-05-11 Tibor Kiss  Do not trade during earnings season.
+* | 40c000d 2015-05-11 Tibor Kiss  Add Yahoo Earnings calendar loader to tools
+|/  
+* 00323fd 2015-01-02 Tibor Kiss  Fix iqfeed socket timeout
+* 0f81cf9 2015-01-02 Tibor Kiss  Set iqfeed socket to nonblocking
+* 0a70ca8 2015-01-02 Tibor Kiss  Split up profit & roi printout into two lines
+* ec5ff0f 2015-01-02 Tibor Kiss  Backtest whole 2014 in the system test
+* c591148 2015-01-01 Tibor Kiss  Add APU_SPH to paper traded pairs
+* 276004e 2015-01-01 Tibor Kiss  Remove SSL_APD from live traded pairs
+* 49cbbe4 2015-01-01 Tibor Kiss  System test for the actively traded pairs for 2014
+* 01d9262 2015-01-01 Tibor Kiss  GZip support for CSV files
+* f92e4f8 2015-01-01 Tibor Kiss  Cosmetical fix in "Hist bars loaded" message
+* 97950f0 2014-12-31 Tibor Kiss  Workaround bar counting.. :(
+* f7dc010 2014-12-31 Tibor Kiss  Add XRAY_MR to paper pairs
+* 05b1d1e 2014-12-31 Tibor Kiss  Optimize bar and day counting
+*   880a0f0 2014-12-31 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-dyn/huba
+|\  
+| * 2cd61ba 2014-12-30 Tibor Kiss  Add good morning and good night message to the daily routine
+* | 4d96e6a 2014-12-31 Tibor Kiss  Add BID_FOSL to real trading pairs
+|/  
+* a025be6 2014-12-30 Tibor Kiss  Good morning & good night to monitor_logs.py
+* 9706376 2014-12-30 Tibor Kiss  Remove IBM_GLD and TEVA_MR from paper traded pairs, add MDT_USPH to paper
+* 55fca08 2014-12-19 Tibor Kiss  Print currently processed pair in multiprocessing runs
+* 2885b44 2014-12-18 Tibor Kiss  Update trading logs
+* 207e8e1 2014-12-18 Tibor Kiss  Replace DEL_CVCO by WTS_CVCO in paper trading
+* ff6b031 2014-12-18 Tibor Kiss  Fix daily roi calculation:
+* fa7a26f 2014-12-15 Tibor Kiss  Add --all to backtest run mode
+* 1b2ea83 2014-12-15 Tibor Kiss  Assume we have header in backtest.csv file
+* f9492f2 2014-12-15 Tibor Kiss  Add KOF_FMX to paper trading pairs
+* 621d4ef 2014-12-11 Tibor Kiss  Optimize all pairs
+* 7e3df2b 2014-12-09 Tibor Kiss  Add TAL_CGI to live trading pairs
+* e090e78 2014-12-09 Tibor Kiss  Update trade logs
+* f71ab47 2014-12-09 Tibor Kiss  Use last day's close on daily ROI calculation
+* df8516f 2014-12-05 Tibor Kiss  Split up daily roi printout into two lines
+* e66b963 2014-12-04 Tibor Kiss  Set default lookback period to 60 days
+* bf30f38 2014-12-03 Tibor Kiss  Do not return results in multicore runs, remove performance monitor (buggy)
+* 99aaf68 2014-12-02 Tibor Kiss  Fix filter_finished_backtests_from_batch.py as backtest.csv format has changed
+* 6e3f263 2014-12-02 Tibor Kiss  Fix writeBarsToNTCSV
+* 1b2a231 2014-12-02 Tibor Kiss  Get rid of pairs with BRK-A, too expensive for us. Sorry Mr Buffett
+* f97bdc4 2014-12-02 Tibor Kiss  Add yahoo.us pairscan data for 2014. dec. scan
+* 0ea5ad1 2014-12-02 Tibor Kiss  1M iqfeed support & refactoring. Change the minute data format. Team, this is Big! (C) Liz@IBM.
+* 28f8412 2014-12-02 Tibor Kiss  Properly show exception on retry logging
+* b0e2a84 2014-11-26 Tibor Kiss  Add commission to closing positions in live trading
+* 28f894e 2014-11-25 Tibor Kiss  Set python interpreter for google_intraday.py
+* 9536a5b 2014-11-25 Tibor Kiss  Update trading logs
+* 6097cd3 2014-11-25 Tibor Kiss  Update crontab script
+* 9a9a0d0 2014-11-25 Tibor Kiss  Check for unit tests in daily log monitor
+* 8fca23e 2014-11-25 Tibor Kiss  Beauty contest in huba_run_tests.sh
+* 38a6b0c 2014-11-25 Tibor Kiss  Print huba version on runtests
+* dc0cb09 2014-11-25 Tibor Kiss  Pimp plot saver
+* 654bab9 2014-11-25 Tibor Kiss  Show entry points in plots
+* 052093b 2014-11-25 Tibor Kiss  Get rid of usbdev
+* 2947f14 2014-11-25 Tibor Kiss  Optimize CNX_BHI
+* be78ecf 2014-11-25 Tibor Kiss  Add version, barCount to backtest.csv
+* b415b86 2014-11-25 Tibor Kiss  Do not show dirty flag in git version
+* 0eba2e0 2014-11-24 Tibor Kiss  Clean up
+* 6cec27c 2014-11-23 Tibor Kiss  Loosen a bit systemtest's rules
+* e375f22 2014-11-23 Tibor Kiss  Move ALKS_MNTA, PNR_DOX, CXO_TCP, BRKR_ININ from real to paper trading. Also reorder pairs.
+* 550735d 2014-11-23 Tibor Kiss  Check for duplicates in pairs
+* 9c7270e 2014-11-23 Tibor Kiss  Speed up brokerAgent test
+* 8cb17ed 2014-11-23 Tibor Kiss  Update crontab
+* 157a57f 2014-11-23 Tibor Kiss  Fix console redirects in huba_run_tests.sh
+* 864600a 2014-11-23 Tibor Kiss  document _loadHistoricalBars
+* 6210c48 2014-11-23 Tibor Kiss  Testrunner printouts to stderr
+*   3220405 2014-11-23 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-dyn/huba
+|\  
+| * b55c668 2014-11-23 Tibor Kiss  Update trade logs
+* | 3b08e77 2014-11-23 Tibor Kiss  huba_run_tests.sh script
+|/  
+* 509eeb8 2014-11-23 Tibor Kiss  This will hurt: rework trade & daily roi calculation
+* 591810d 2014-11-23 Tibor Kiss  Add firstBar and closedPosCnt to StatArbStrategy
+* b4482d3 2014-11-23 Tibor Kiss  Prepare for backtesting while real trading
+* 4b0bff6 2014-11-23 Tibor Kiss  Remains of beauty contest
+* 031ac57 2014-11-22 Tibor Kiss  Apple Script is updating for no reason
+* 30dfc42 2014-11-22 Tibor Kiss  Scrap file for code snippets
+* 5e0cd65 2014-11-22 Tibor Kiss  Update TODO
+* 376a010 2014-11-22 Tibor Kiss  Updating mass backtest script
+* 2bf36f6 2014-11-22 Tibor Kiss  Getting rid of old backtest data
+* 1574eb5 2014-11-22 Tibor Kiss  Beauty contest
+* 672fc00 2014-11-22 Tibor Kiss  get rid of IS_PYPY import, useless as numpy is integrated now
+* 7ef30c3 2014-11-22 Tibor Kiss  Some class docs for BrokerAgent
+* 9458062 2014-11-22 Tibor Kiss  Use tools.log_exception in the Strategy.run_guarded
+* 1ab8bcd 2014-11-22 Tibor Kiss  Add log_exception to tools
+* 243ed3b 2014-11-21 Tibor Kiss  Add JXI_XRT to paper trading pairs
+* b07a403 2014-11-21 Tibor Kiss  Fix CSV row name in logDailyROIToCSV
+* 1c9f496 2014-11-21 Tibor Kiss  Use real trading pairs in systemtest
+* 74636e6 2014-11-21 Tibor Kiss  Improve daily roi printout & save
+* 17f3e38 2014-11-20 Tibor Kiss  Print out ROI per pair on day end
+* 5702d83 2014-11-20 Tibor Kiss  Add GII_BLV to paper trading pairs
+* 8f1d102 2014-11-20 Tibor Kiss  Add logDailyROIToCSV method to tools.csv_cache
+* eb7f702 2014-11-19 Tibor Kiss  Add back CNX_BHI to real paris
+* 5caf736 2014-11-18 Tibor Kiss  Additional TOK Pairs as comments
+* 666db1c 2014-11-18 Tibor Kiss  pimp my plotter
+* 6793780 2014-11-18 Tibor Kiss  Add IHF_USPH to real pairs, TOK_IOO to paper pairs
+* 2bfcc90 2014-11-17 Tibor Kiss  Drop CNX_BHI from pairs, HAL.N brought BHI: http://finance.yahoo.com/news/halliburton-buy-baker-hughes-34-115816989.html
+* 5f031e4 2014-11-16 Tibor Kiss  Add size to onOrderUpdate() cache
+* b4b8d1e 2014-11-16 Tibor Kiss  Create cached wrapper for loadHistoricalBars
+* 08b1cd8 2014-11-16 Tibor Kiss  Disable caching for loadCSV
+* 993442f 2014-11-15 Tibor Kiss  Enhance performance monitor
+* 97780ee 2014-11-15 Tibor Kiss  Enable perfmon logging
+* c36a551 2014-11-15 Tibor Kiss  Fix too many open files bug in loadCSV
+* 381b711 2014-11-15 Tibor Kiss  Add filter_finished_backtests_from_batch.py
+* 89549d1 2014-11-14 Tibor Kiss  Refactor cache (moved to pyalgotrade). Optimized NinjaTrader's parse_data with cache for minute data
+* d7ef41b 2014-11-13 Tibor Kiss  Exception handling for backtest
+* 0f03651 2014-11-13 Tibor Kiss  get rid of LoadCSV_Cached
+* f27da31 2014-11-13 Tibor Kiss  fix lru cache ;)
+* 6fddcf0 2014-11-13 Tibor Kiss  Fix LRU Cache with better implementation
+* 84244df 2014-11-13 Tibor Kiss  Cache minute bars only (preparing for scan)
+* 54a2fe7 2014-11-13 Tibor Kiss  Add LRU algorithm to cache handling
+* 0063877 2014-11-13 Tibor Kiss  Reduce optimization parameter set
+* 6a25997 2014-11-13 Tibor Kiss  Fix backtest's default end to 20131231
+* c0cf46e 2014-11-11 Tibor Kiss  Optimize paper trading parameters using 1M backtest data
+* 5b82552 2014-11-11 Tibor Kiss  Check for file existence in iqfeed
+* a87aed6 2014-11-11 Tibor Kiss  Update real trading pair parameters: take best parameters from backtest between 2009-2014
+* c3592ab 2014-11-11 Tibor Kiss  Add CMC_TRAK, CRH_RRC to paper trading pairs (Lilla)
+* bb497e0 2014-11-10 Tibor Kiss  Update crontab to fetch google intra every day
+* 177ca7e 2014-11-10 Tibor Kiss  Add google intra fetch list
+* 1030215 2014-11-10 Tibor Kiss  Add KB_LFC to paper trading pairs (Lilla)
+* fae378a 2014-11-10 Tibor Kiss  Add OrderedSet to tools
+* e2cd9ad 2014-11-10 Tibor Kiss  Get rid of quantiles in google_intraday.py
+* 67b25fc 2014-11-09 Tibor Kiss  Add ETFDB stock list
+* 84e7b76 2014-11-09 Tibor Kiss  get-from-file routine to iqfeed downloader
+* 715b07f 2014-11-09 Tibor Kiss  Consolidate goole intra day fetcher
+* 08b6005 2014-11-09 Tibor Kiss  Get rid of import numpypy
+* b43280c 2014-11-09 Tibor Kiss  Get rid of numpypy imports, reduce log level for Z-Score too high message and use append mode in writeBarsToNTCSV  call
+* c1dd6c7 2014-11-09 Tibor Kiss  Move monitor_logs under tools/
+* a2285c1 2014-11-09 Tibor Kiss  move google_intraday script to tools/
+* 2a8767e 2014-11-09 Tibor Kiss  Move fetch_google_intraday script to tools/
+* a866cd7 2014-11-09 Tibor Kiss  Use append mode in writeBarsToNTCSV
+* 301ed73 2014-11-09 Tibor Kiss  Instrument listing functions: return currently traded, s&p 500 and russell-3000 stocks
+* ec317fe 2014-11-09 Tibor Kiss  Append mode to writeBarsToNTCSV
+* bcebe8e 2014-11-09 Tibor Kiss  Iqfeed csv downloader
+* 56abce7 2014-11-06 Tibor Kiss  Log message cosmetics
+* 6f6fffe 2014-11-05 Tibor Kiss  Enhance printouts in statarb
+* 4af6899 2014-11-05 Tibor Kiss  Set brokeragent's loglevel to debug in verbose mode
+* 535e39b 2014-11-04 Tibor Kiss  Add subscription info to debug log
+* 3f851b3 2014-11-04 Tibor Kiss  Add INSY_NBIX to paper trading pairs (Lilla)
+* 47223fc 2014-11-04 Tibor Kiss  Use Real account's StatArb Configs in backtest
+* 5765bd4 2014-11-04 Tibor Kiss  New script: show_roi_per_pair.py
+* 534f9a1 2014-11-04 Tibor Kiss  Consolidate trading pairs: Remove (most of the) real pairs from paper pairs, remove non-working pairs from paper.
+* c4286d3 2014-11-04 Tibor Kiss  Show trigger price on exit trade
+* b1654d1 2014-11-03 Tibor Kiss  Update trading logs
+* c8f9897 2014-11-03 Tibor Kiss  Add BID_FOSL, ADBE_EFII, APH_EXLP, CLNE_MBT,  BJRI_SMTC, MAS_SENEA, NIB_COV, RS_WCC, RWR_PUK, ATW_GES to paper trading pairs
+* de7a7cc 2014-11-03 Tibor Kiss  Fix BrokerAgent testcases
+* f68ecc3 2014-11-03 Tibor Kiss  Show trigger entry prices and get rid of Exception when order is not filled
+* 0fa6c4b 2014-11-03 Tibor Kiss  Use commission in riskmanager, update riskmanager's capital hourly
+* dcc9661 2014-10-27 Tibor Kiss  Add back NX_IR to real pairs (until the last position is closed)
+* d5d5ac8 2014-10-24 Tibor Kiss  Paper trading: Add BANC_STL,AN_MYRG Live trading: Remove IR_NX, Add ACC_BIP, AZPN_MXIM
+* 66dd0a0 2014-10-24 Tibor Kiss  Reduce log level in retry() decorator
+*   f24c27b 2014-10-23 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-dyn/huba
+|\  
+| * 0dcdc14 2014-10-23 Tibor Kiss  Reduce lookbackWindow parameter set in optimization
+| * 81bc769 2014-10-23 Tibor Kiss  Ignore penny stocks
+* | 6d601f5 2014-10-23 Tibor Kiss  Update trade logs
+|/  
+* 3c960df 2014-10-23 Tibor Kiss  Add CEB_GPX to lookbackWindow experiment (lookbackWindow=20)
+* 524443d 2014-10-23 Tibor Kiss  More precise update zscore time interval
+* 4019ad5 2014-10-23 Tibor Kiss  Fix extendDailyBars function
+* 5f38edb 2014-10-23 Tibor Kiss  Add SOCKS Proxy support
+* 641af17 2014-10-23 Tibor Kiss  Reduce optimizer's parameter set of lookbackwindow
+* 548f1e9 2014-10-23 Tibor Kiss  Use Gabriel's sharpe_ratio_2
+* 601138b 2014-10-23 Tibor Kiss  Use Gabriel's sharpe_ratio_2
+* 584b091 2014-10-23 Tibor Kiss  Use expandDailyBars in Daily backtest feeds
+* 7f9c5ac 2014-10-23 Tibor Kiss  Add expandDailyBars to csv_tools
+* 4448b71 2014-10-23 Tibor Kiss  Include the failing line only to the email
+* f542905 2014-10-18 Tibor Kiss  Skip empty bars where volume is 0
+* 0b8dba1 2014-10-18 Tibor Kiss  Finalize fetch_google_intraday.py script
+*   2786a63 2014-10-18 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-dyn/huba
+|\  
+| * 1f9f941 2014-10-17 Tibor Kiss  Enable email sending in monitor_logs.py
+* | fda8bd3 2014-10-18 Tibor Kiss  Include Russell-3000 and S&P-500 in google download list
+* | bd4d7d3 2014-10-18 Tibor Kiss  Add Russell-3000 and S&P-500 lists
+|/  
+* ef86d8f 2014-10-17 Tibor Kiss  add google as 1M source
+* c7ca867 2014-10-17 Tibor Kiss  Reduce logging about lodaded bars
+* 8882f8a 2014-10-17 Tibor Kiss  Fix CSV Transform scripts
+* b581864 2014-10-17 Tibor Kiss  Get rid of old file
+* 4b8400b 2014-10-17 Tibor Kiss  Add script csv_xform_huba_1m_daily_to_yearly.py
+* 206b7dc 2014-10-16 Tibor Kiss  Fix TWS Real in crontab
+* d8d9b67 2014-10-16 Tibor Kiss  Add log monitor to crontab
+*   8a3f360 2014-10-16 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-dyn/huba
+|\  
+| * 356ef41 2014-10-16 Tibor Kiss  Improve monitor_logs script
+| * da58afe 2014-10-16 Tibor Kiss  Add warning about DownscaleBarsInTime TZ handling
+| * 55b18db 2014-10-16 Tibor Kiss  Fix testDownscaleBarsInTime
+| * 1e92bc8 2014-10-16 Tibor Kiss  Print leverage periodically
+| * 57a94cd 2014-10-16 Tibor Kiss  Remove double dash before the tag from the saved bars file name
+| * 233dd83 2014-10-16 Tibor Kiss  Fix DownscaleBarsInTime: Eastern/DST was not correctly handled due to wrong TZ info
+| * d4a1ee7 2014-10-16 Tibor Kiss  Fix bug in Bar Saver, better minutely data loader
+| * a498a98 2014-10-16 Tibor Kiss  Rename TWS Live to TWS Real
+* | 9f409a0 2014-10-16 Tibor Kiss  convert_1m_daily_csv_to_yearly.py
+|/  
+*   8abfdee 2014-10-16 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-dyn/huba
+|\  
+| * 568de8d 2014-10-16 Tibor Kiss  Group 1M saved data yearly
+| * c991315 2014-10-16 Tibor Kiss  Append data in writeBarsToNTCSV
+* | 85ac4bf 2014-10-15 Tibor Kiss  Add JTS logs to gitignore
+|/  
+* c96eedc 2014-10-15 Tibor Kiss  Update trade logs
+*   f45a620 2014-10-15 Tibor Kiss  Merge branches 'master' and 'master' of ssh://jahdisk-dyn/huba
+|\  
+| * 890bc96 2014-10-15 Tibor Kiss  Partially fix the business day testcase. Still failing Static test
+| * c2607b5 2014-10-15 Tibor Kiss  Fix backtest BUG: the day of the backtest was used to calculate ZScore. It is invalid, since in live run the actual day's stat is not available.
+| * 0d9aa99 2014-10-15 Tibor Kiss  Print version on huba start
+| * 061359a 2014-10-15 Tibor Kiss  get_git_version: cache and remove extra new line
+| * b138c6b 2014-10-15 Tibor Kiss  Add workdays 1.3 package to tools
+| * 69d22d7 2014-10-15 Tibor Kiss  Get rid of buggy goback function
+| * b03a746 2014-10-15 Tibor Kiss  Initial version of log monitor
+| * 97d59a7 2014-10-15 Tibor Kiss  Add google intra transform script
+| * 86d9977 2014-10-15 Tibor Kiss  Fix 1M backtesting: stop the system at EOD only in live trading
+| * ae8c70e 2014-10-15 Tibor Kiss  Show stack trace on exception for guarded functions in Strategy
+| * dbeab95 2014-10-14 Tibor Kiss  use git version in help screen
+| * ee86c59 2014-10-14 Tibor Kiss  Add get_git_version to tools
+* | c7a5a76 2014-10-14 Tibor Kiss  Remove dead paper pairs: ISBC_SCBT and ATMI_WOOF
+|/  
+* b3fefcf 2014-10-09 Tibor Kiss  Update trading logs
+* 3f10a1d 2014-10-07 Tibor Kiss  Decrease lookback window for a couple of paper stocks
+* 816290d 2014-08-11 Tibor Kiss  Update trading logs
+* b8cec8e 2014-06-30 Tibor Kiss  Update trade log
+*   5f3aa48 2014-05-09 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-ext/huba
+|\  
+| * c7367ed 2014-05-09 Tibor Kiss  Added Jts-941.1
+| * e0da207 2014-05-09 Tibor Kiss  Move to TWS 941.1
+* | 638c7d0 2014-04-21 Tibor Kiss  Added BRKR_ININ and EZA_EWH to real trading pairs
+|/  
+* f3b36a4 2014-04-18 Tibor Kiss  Adopt fetch_google_intraday.py script to the new StatArbStrategyPairs structure
+* 1940b44 2014-04-16 Tibor Kiss  Simplify trading frequency override
+* e60f22a 2014-04-15 Tibor Kiss  Add CEB_GPX to real pairs, increase trading frequency of MSCC_PRGS, CXO_TCP, CRH_MLM and SSL_APD paper trading pairs
+* 11bc996 2014-04-15 Tibor Kiss  Update PyCharm project files
+* defe610 2014-04-15 Tibor Kiss  Enable per account type (real, paper) pair configs. Set paper IR_NX to high frequency
+* 3b6a863 2014-03-27 Tibor Kiss  Update trading logs
+* b85b115 2014-03-27 Tibor Kiss  Added SLF_AMWD, AMX_CAC, ATMI_WOOF, BMTC_KEY, EPAY_CAM, CLR_TRAK, CMC_PRE to paper trading pairs
+* 4dbe080 2014-03-26 Tibor Kiss  Added FHCO_ABAX, ADI_EFR, HAFC_AEGN, HRC_AIN, AJG_WSO, ALGN_CVG to paper trading
+* d9e0180 2014-03-26 Tibor Kiss  Added IB CSVExport summarizer script
+* 1bafc6c 2014-03-24 Tibor Kiss  Added CNX_BHI, removed DHR_WAT. Leverage bumped to 1.8
+* 232e5b6 2014-03-16 Tibor Kiss  Update trading logs
+* fc87bb1 2014-03-16 Tibor Kiss  Set local time zone to NY, use Eastern time in crontab
+* 1ff6e1a 2014-03-07 Tibor Kiss  Updated trading logs
+* 91d9344 2014-03-07 Tibor Kiss  Added SSL_APD to real trading pairs
+* 20d374d 2014-02-25 Tibor Kiss  Update trading logs
+* 3c94be8 2014-02-17 Tibor Kiss  Beauty contest in brokeragent
+* 0cc6604 2014-02-17 Tibor Kiss  UNH_USPH replaced by IHF_USPH in paper trading
+* 8bb1f9d 2014-02-12 Tibor Kiss  updated trading logs
+* 4928e27 2014-02-12 Tibor Kiss  Reduce pyalgotrade.providers.interactivebrokers log level to WARN
+* 49fa8e4 2014-02-12 Tibor Kiss  Disable csv testcase
+* 4385774 2014-02-11 Tibor Kiss  Fix StatArb testcases
+* 268e354 2014-02-11 Tibor Kiss  Introduce transitional states (Entering, Exiting)
+* 6b6cd15 2014-02-11 Tibor Kiss  Fix config testcases: check for Test account too
+* 5697414 2014-02-11 Tibor Kiss  Get rid of statrb_logic test from runtests.py
+* 2341b15 2014-02-11 Tibor Kiss  Added NDSN_ROSE to paper trading pairs
+* 0ca4365 2014-02-11 Tibor Kiss  Added instr parameter to live-trading
+* f6b35ec 2014-02-11 Tibor Kiss  Use two digit year in logging datetime
+* 9bcd019 2014-02-10 Tibor Kiss  Get rid of empty testcases from test_csv_tools
+* 621979d 2014-02-10 Tibor Kiss  Consolidate StatArb tests, add onOrderUpdate testcase
+* 7ede093 2014-02-10 Tibor Kiss  Add recovery from broken position state, debounce onOrderUpdate
+* 392a7c4 2014-02-10 Tibor Kiss  Remove empty testcase from test_huba
+* d79a373 2014-02-10 Tibor Kiss  Update PSoC project files
+* 5225971 2014-02-10 Tibor Kiss  Remove empty testcases from test_analyzer
+* 46675fd 2014-02-10 Tibor Kiss  Add Kalman Filter example
+*   380bb1f 2014-02-06 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-ext/huba
+|\  
+| * 47c76ce 2014-02-06 Tibor Kiss  Update trade logs
+| * caedf19 2014-01-22 Tibor Kiss  Update leverage for paper trading
+| * ab36dae 2014-01-22 Tibor Kiss  Update trade logs
+| * f4c34d7 2014-01-22 Tibor Kiss  Added UNH_USPH pair to paper trading
+| * b03685c 2014-01-01 Tibor Kiss  Sleep 11s between realtime bar subscriptions to avoid flooding IB
+| * befe8ba 2014-01-01 Tibor Kiss  Update trading logs, 2013 complete
+| * faa0b3e 2014-01-01 Tibor Kiss  Sleep 11s between realtime bar subscriptions
+* | 822958e 2014-01-01 Tibor Kiss  Initial add
+|/  
+* 0e9bc29 2013-12-24 Tibor Kiss  Updated trading logs. Merry Xmas!
+* 1ca936f 2013-12-17 Tibor Kiss  Get rid of CSCO_PKE paper pair, 'Contract description is ambiguous'
+* 0f9fe89 2013-12-17 Tibor Kiss  Remove per instrument subscription message
+* 9809fa5 2013-12-17 Tibor Kiss  Add delay between realtime bar subscriptions
+* fa849b4 2013-12-17 Tibor Kiss  Updated trading logs
+* b4ee8a9 2013-12-17 Tibor Kiss  Added ABG_IX,  ACC_BIP,  ACM_CRAI, VT_EFT, SLX_IIVI to paper account
+* 44ef138 2013-12-16 Tibor Kiss  Add CXO_TCP and CRH_MLM to real account and CSCO_PKE to paper
+* 22dc9fe 2013-12-11 Tibor Kiss  Make pyalgotrade relative to HUBA_DIR
+* a45f8b7 2013-12-11 Tibor Kiss  Update trading logs
+* 46a8419 2013-12-11 Tibor Kiss  Add TEVA_MR to paper pairs, adjust paper leverage to use 4k/pair
+* db8e5e7 2013-12-11 Tibor Kiss  Always use leverage=1.0 in backtest
+* 01d3b5b 2013-12-07 Tibor Kiss  Using FlatRate commission in real live-trading
+* 7a9a29e 2013-12-07 Tibor Kiss  Update cost plus info
+* 32b82f7 2013-12-01 Tibor Kiss  Temporarily removed NX_IR from real trading list: upcoming split
+* aca105e 2013-11-30 Tibor Kiss  Removed XPH_WDFC from paper pairs
+*   8c39676 2013-11-30 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-ext/huba
+|\  
+| * 6c78339 2013-11-30 Tibor Kiss  Add MSCC_PRGS to real pairs, increase Leverage to 0.8
+* | 4ec2891 2013-11-30 Tibor Kiss  Update trading logs
+|/  
+* eaf4501 2013-11-28 Tibor Kiss  Added IBM_GLD to paper trading list, extended lookwindow range in optimizer
+* ef7c145 2013-11-28 Tibor Kiss  Update logs
+* 0922f50 2013-11-27 Tibor Kiss  get rid of livetrade string
+* c797531 2013-11-27 Tibor Kiss  Add livetrade to logging filename and fill tag automatically on live-trade session
+* 3b81fa0 2013-11-27 Tibor Kiss  Use the new huba_start_real.sh script in the screen config
+*   2b2afb1 2013-11-27 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-ext/huba
+|\  
+| * 28836f0 2013-11-27 Tibor Kiss  Make the new docparser based argument handling work with live trading
+| * 265f749 2013-11-20 Tibor Kiss  Reduce cache for loadCSV to have some buffer for memleaks on long runs
+| * 451fbe4 2013-11-20 Tibor Kiss  Disable PerformanceMonitor in multicore runs
+| * 36ed4e0 2013-11-20 Tibor Kiss  Perfmon is still not perfect...
+| * 034ec38 2013-11-20 Tibor Kiss  Optimize memory footprint for mass backtesting
+| * e899439 2013-11-19 Tibor Kiss  Update optimizable parameters
+| * 2f5e88c 2013-11-19 Tibor Kiss  Add selection criteria to stock requirements
+| * fb8363a 2013-11-19 Tibor Kiss  Use intern() on loaded pairs, this will optimize the used memory
+| * 5da6c6b 2013-11-19 Tibor Kiss  replace log.info with print() in performance monitor
+| * bd94094 2013-11-19 Tibor Kiss  Updated scanning related scripts
+| * fd50723 2013-11-19 Tibor Kiss  Get rid of old files
+| * 4fbdd7e 2013-11-15 Tibor Kiss  Fix tag
+| * c823c76 2013-11-15 Tibor Kiss  Fix bug in saveResults
+| * 5904e49 2013-11-15 Tibor Kiss  Fix pool tag names
+| * e4ba8b7 2013-11-15 Tibor Kiss  Use Bar's getDate() in csv cache
+| * ec39ef6 2013-11-15 Tibor Kiss  Initialize _K in the constructor in Kalman Filter
+| * c6a8865 2013-11-15 Tibor Kiss  Add worker name to the tag in multicore runs
+| * 220aaf5 2013-11-14 Tibor Kiss  Fix multiprocessing code
+| * a24e5e4 2013-11-14 Tibor Kiss  Simple equity plotter script
+| * 6146290 2013-11-14 Tibor Kiss  Added docopt to tools
+| * 97777ba 2013-11-14 Tibor Kiss  Rework huba.py: use multiprocessing and docopt
+| * d6ed9e8 2013-11-14 Tibor Kiss  Created requirements document for scanning plans
+| * 2958d33 2013-11-14 Tibor Kiss  Enhance PerformanceMonitor
+| * 14f4eab 2013-11-14 Tibor Kiss  Added attributesFromDict(d) function from Python Cookbook
+| * 446d5d7 2013-11-14 Tibor Kiss  Tidy up mass scanning scripts:  - prefilter_stocks.py to verify price, volume and dates  - create_pairs.py to create pairs  - filter_backtest_results.py is not quiet there yet
+| *   f451c95 2013-11-12 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-ext/huba
+| |\  
+| * | ab9d589 2013-11-12 Tibor Kiss  Updated TODO and Stock selection requirements
+| * | 1e66aae 2013-11-12 Tibor Kiss  Skeleton for BuyAndHold strategy
+| * | 3549ed2 2013-11-10 Tibor Kiss  Added backtest-allcfg parameter
+* | | a6581b1 2013-11-25 Tibor Kiss  Live: added PNR_DOX, changed leverage to 0.7. Paper: added DBE_MORN
+* | | 1b5297a 2013-11-25 Tibor Kiss  Added DBE_MORN to config
+* | | 5375330 2013-11-25 Tibor Kiss  updated trading logs
+| |/  
+|/|   
+* | 272ec8f 2013-11-11 Tibor Kiss  update trade logs
+* | 6a28b58 2013-11-11 Tibor Kiss  Added ALKS_MNTA and IILG_FLY to live, AZPN_MXIM and MVF_BHK to paper
+* | 485dc26 2013-11-07 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-ext/huba
+|\| 
+| * 854882f 2013-11-07 Tibor Kiss  Fix typo in previous commit
+| * cd85f29 2013-11-07 Tibor Kiss  Add Z-Score to trade exit
+* | 39e0d79 2013-11-07 Tibor Kiss  updated trading logs
+|/  
+* d084a4e 2013-11-06 Tibor Kiss  Fix pair input parsing
+* 3699e17 2013-11-06 Tibor Kiss  Added ROI to trade logs
+*   7e3c83d 2013-11-06 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-ext/huba
+|\  
+| * 3d9c63b 2013-11-06 Tibor Kiss  update live trading logs
+* | cbbdc82 2013-11-06 Tibor Kiss  updated backtest logs
+* | 9d186f2 2013-11-06 Tibor Kiss  Beauty contest in riskmanager
+* | efc6d8d 2013-11-06 Tibor Kiss  Added offline mode
+* | da2051a 2013-11-05 Tibor Kiss  Cosmetics in StatArbStrategy
+* | cfc38eb 2013-11-05 Tibor Kiss  Adjust cache size in loadCSV
+* | 36c5782 2013-11-05 Tibor Kiss  Fix hourly equity printout
+* | 6bac92a 2013-11-05 Tibor Kiss  Support pypy in kalman filter
+* | 0b383b9 2013-11-05 Tibor Kiss  Clean up huba startup
+* | 3c7d892 2013-11-05 Tibor Kiss  Added simple LogFilter to tools
+* | abecaf5 2013-11-05 Tibor Kiss  Handle bankrupcy in analyzer
+* | c84460e 2013-11-05 Tibor Kiss  Check for negative equity in brokeragent
+* | f37d67d 2013-11-05 Tibor Kiss  Added performance monitor
+* | bd83411 2013-11-05 Tibor Kiss  Added fixed size cache decorator
+|/  
+*   700d9e2 2013-11-05 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-ext/huba
+|\  
+| * 4ab7b74 2013-11-05 Tibor Kiss  pimp ut gitignore file
+| * 658ea76 2013-11-05 Tibor Kiss  update trading logs
+| * bea8a6b 2013-11-01 Tibor Kiss  Ignore python object files
+| * 9fb0368 2013-11-01 Tibor Kiss  updated TWS Config files
+| * 5b6d05c 2013-11-01 Tibor Kiss  updated crontab: use TWS for paper and live
+| * 2198c2d 2013-11-01 Tibor Kiss  updated trading logs
+* | 07d579b 2013-11-05 Tibor Kiss  Added ROI to profit calculation
+* | 9c25593 2013-11-05 Tibor Kiss  fix backtest-list
+* | 1db6ae3 2013-11-04 Tibor Kiss  Update backtest logs with KF results
+* | 491826b 2013-11-04 Tibor Kiss  Beauty contest
+* | 98eae20 2013-11-04 Tibor Kiss  Fix huba systemtest
+* | 37338ec 2013-11-04 Tibor Kiss  Fix StatArb testcases
+* | ffe79d5 2013-11-04 Tibor Kiss  Use 0.0001 as delta in KF
+* | b39ae33 2013-11-04 Tibor Kiss  Huba cosmetics
+* | b234d7c 2013-11-04 Tibor Kiss  Get rid of bar sorting, the loadCSV already ensures sorted data
+* | 7ef5c4a 2013-11-04 Tibor Kiss  Added information on delta for OLS
+* | 96f2383 2013-11-04 Tibor Kiss  Cosmetics in Kalman Filter
+* | 639e819 2013-11-04 Tibor Kiss  Optimize bar loading, fix csv file writing (seek)
+* | f5080a1 2013-11-04 Tibor Kiss  Cosmetics in plotter
+* | 57e1289 2013-11-03 Tibor Kiss  Updated backtest log
+* | 3f3680c 2013-11-03 Tibor Kiss  updated todo (not so up to date)
+* | 65f1b60 2013-11-03 Tibor Kiss  pypy support, yay!
+* | c64a4cf 2013-11-03 Tibor Kiss  Integrate Kalman Filter
+* | 3c48ba5 2013-11-03 Tibor Kiss  Kalman filter - initial version
+* | 6656e29 2013-11-02 Tibor Kiss  Fix huba system tests
+* | 3d1df13 2013-11-02 Tibor Kiss  Fix BrokerAgent tests
+* | 9bf14e9 2013-11-02 Tibor Kiss  Enhance logging
+* | c0f1530 2013-11-02 Tibor Kiss  Clean up huba testcase
+* | da9917d 2013-11-02 Tibor Kiss  Fix StatArb testcases
+* | 0155f75 2013-11-02 Tibor Kiss  Added Strategy TestCase
+* | e0e97d9 2013-11-02 Tibor Kiss  Use Strategy as base class, refactor logging
+* | 339b117 2013-11-02 Tibor Kiss  Use Guarded Strategy functions in BrokerAgent + cosmetics
+* | b7377e9 2013-11-02 Tibor Kiss  Reworked Strategy class: introduced guarding
+* | 4e27441 2013-11-02 Tibor Kiss  Added DT_FMT to tools
+|/  
+* ca376e1 2013-10-28 Tibor Kiss  shorten log messages
+* 97ec18d 2013-10-28 Tibor Kiss  updated applescript
+* b969d08 2013-10-28 Tibor Kiss  updated trade logs
+* 8d58b65 2013-10-28 Tibor Kiss  update TWS config
+* 6421f28 2013-10-21 Tibor Kiss  disable GOOG_APH, GOOG is too expensive
+* 468980d 2013-10-18 Tibor Kiss  get rid of KDN_CAS, one of the stocks is not available from now
+* 7c8498d 2013-10-01 Tibor Kiss  fix intraday fetch script
+* 86c2bad 2013-10-01 Tibor Kiss  Huba is going live!
+* 83b4c96 2013-10-01 Tibor Kiss  update JTS config
+* 61fe9ed 2013-10-01 Tibor Kiss  Move to Lilla's paper trading account
+* aa60ced 2013-10-01 Tibor Kiss  updated paper trading logs
+* 12640ca 2013-09-27 Tibor Kiss  Change SystemError to Exception in yahoo data downloader
+* 5be59c6 2013-09-27 Tibor Kiss  fix logging quirks
+* 75c7c85 2013-09-25 Tibor Kiss  update crontab to use python version of google intraday fetch
+*   56a5a8b 2013-09-25 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-ext/huba
+|\  
+| * 4c129d5 2013-09-25 Tibor Kiss  Replace fetch_google_intraday.sh by fetch_google_intraday.py
+| * 98bffdc 2013-09-25 Tibor Kiss  Whitspace fixes
+| * 92446af 2013-09-25 Tibor Kiss  Clean up HUBA_DIR using os.path.abspath()
+| * 1e495fb 2013-09-25 Tibor Kiss  Cosmetical fix in logging output
+| * acaf1e6 2013-09-25 Tibor Kiss  Improve logging in strategy
+| * 0e2758c 2013-09-24 Tibor Kiss  Reduce logging while stopping
+| * 135c8a5 2013-09-24 Tibor Kiss  Calculate 1M bars only in case of live trading
+| * e33a34c 2013-09-24 Tibor Kiss  Increase backtesting capital to 100k
+* | dfa72ec 2013-09-25 Tibor Kiss  updated paper trading logs
+|/  
+* e233032 2013-09-24 Tibor Kiss  added GOOG_APH as traded pair
+* 30fa3ab 2013-09-24 Tibor Kiss  added parameters and stats for the currently trading pairs
+* 240149d 2013-09-24 Tibor Kiss  updated paper trading results
+* c877345 2013-09-24 Tibor Kiss  Added pairs to paper start file, cosmetical things in the stop script
+* 74bf9ff 2013-09-20 Tibor Kiss  updated tws configuration, window resizing
+* 5ec5b9d 2013-09-19 Tibor Kiss  added csv files to csvcache for testcases
+* 22dd931 2013-09-19 Tibor Kiss  Two new pair candidates
+* 84ceaea 2013-09-19 Tibor Kiss  Update backtest file (contains dd duration)
+* b852c1c 2013-09-19 Tibor Kiss  Added datetime formatting to log messages
+* b909655 2013-09-18 Tibor Kiss  Fix datetime printout in Equity CSV
+* 40f53f7 2013-09-18 Tibor Kiss  Fix testcases: pass the unimplemented ones
+* b6c6418 2013-09-18 Tibor Kiss  fix datetime handling in brokeragent
+* ac365bc 2013-09-18 Tibor Kiss  update jts config for paper trading
+* 874daac 2013-09-18 Tibor Kiss  updated equities file
+* 2e32481 2013-09-18 Tibor Kiss  Fix CSV Downloader: added retry decorator and timezone info for NinjaTrader and Yahoo feeds
+* 14c7d53 2013-09-18 Tibor Kiss  Get rid of old timezone definition
+* 44ebab8 2013-09-18 Tibor Kiss  Store RT bars at the end of the live session
+* 784cdc6 2013-09-18 Tibor Kiss  Use TimeZone aware datetimes in bars. Fix date in equity logging to CSV.
+* e5d294b 2013-09-18 Tibor Kiss  Add retry decorator to tools
+* c2b3521 2013-09-17 Tibor Kiss  remove huba prefix in ibgw, tws log files
+* 9692066 2013-09-17 Tibor Kiss  Adjust huba log file name: avoid 'live' in the filename if action is live
+* a4c1b44 2013-09-17 Tibor Kiss  update jts configs
+*   e681c0f 2013-09-17 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-ext/huba
+|\  
+| * 7ffdb6f 2013-09-17 Tibor Kiss  Add timezone info to downscale bars
+| * 7761bcc 2013-09-17 Tibor Kiss  Preparation to store 1M bars in live runs
+| * 89253d8 2013-09-17 Tibor Kiss  Add timezone information to 1M Bars
+| * f63d50f 2013-09-17 Tibor Kiss  Get rid of old results
+| * d2dbc30 2013-09-17 Tibor Kiss  Remove 'Subscribing realtime bars' message
+* | c26aee0 2013-09-17 Tibor Kiss  updated trading logs
+|/  
+* 0cff22a 2013-09-16 Tibor Kiss  updated jts config files
+* 7f0209c 2013-09-16 Tibor Kiss  Update pairs: MVF_BHK, DHR_WAT out, AMG_CFNL, IILG_FLY in
+* 3f4e4ea 2013-09-16 Tibor Kiss  Update stop file: kill all the processes (incl TWS) at day end
+* 256bd9f 2013-09-16 Tibor Kiss  update crontab file: start TWS every day
+* 9510639 2013-09-16 Tibor Kiss  Updated active pairs: MVF_BHK, DHR_WAT out, AMG_CFNL, IILG_FLY in
+* a040402 2013-09-16 Tibor Kiss  Added leverage to testcase
+* 1ee35d4 2013-09-16 Tibor Kiss  Added leverage
+* b2aad1d 2013-09-15 Tibor Kiss  Reduce default ZScore threshold to 1.0, removed old commented out code, started to work on saveBars (not finished yet)
+* 882e2cb 2013-09-15 Tibor Kiss  Avoid duplicate calling of stop(), added getResult (needed by optimizer)
+* fec38fa 2013-09-15 Tibor Kiss  fix optimizer, do not save plots in mass backtest
+* 52eeaac 2013-09-15 Tibor Kiss  update TODO list
+* 80bb8f3 2013-09-15 Tibor Kiss  Add new pairs to config, fix optimizer
+* 9251088 2013-09-13 Tibor Kiss  cleanup equities a bit
+* 6a8623e 2013-09-10 Tibor Kiss  remove old logs
+* 11da836 2013-09-10 Tibor Kiss  get rid of old log files
+* 02c60b3 2013-09-10 Tibor Kiss  updated paper trading logs
+* 53ad25b 2013-09-10 Tibor Kiss  User logResultsToCSV to store the analyzer results
+* 7c4fcde 2013-09-10 Tibor Kiss  Increase ylim to initialEquity * 5
+* 49f2f9d 2013-09-10 Tibor Kiss  Use adjusted OHLC Bar data
+* f82af53 2013-09-06 Tibor Kiss  Add position state to Z-Score debug printout
+* 619dc52 2013-09-06 Tibor Kiss  Update jts.ini as usual
+* b59b980 2013-09-06 Tibor Kiss  add account code to live trading
+* 6a267ef 2013-09-06 Tibor Kiss  Increment IBController listening port for live trading
+* 6324f2b 2013-09-06 Tibor Kiss  Added IBGW starter app
+* b3ac6c8 2013-09-06 Tibor Kiss  remove debug echoes from the IBControllerStart script
+* 558701f 2013-09-06 Tibor Kiss  Support IBGW and TWS in IBController
+* 0d52bb6 2013-09-06 Tibor Kiss  adjust stop script location in crontab, not sure what is changed in appscript
+* cbc7ffd 2013-09-06 Tibor Kiss  avoid exiting from TWS in the stop script
+* 7211b09 2013-09-06 Tibor Kiss  rename jtsconfig file to paper, adjust the API listening port to 7500
+* 14583cb 2013-09-06 Tibor Kiss  update jts.ini
+* e087f72 2013-09-06 Tibor Kiss  rename existing trade and equity logs with paper suffix
+*   5337485 2013-09-06 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-ext/huba
+|\  
+| * 7bb88ed 2013-09-06 Tibor Kiss  TWS Start apps
+| * 35db45a 2013-09-06 Tibor Kiss  Add colours to the caption lines, start Live and Paper trading in the screenrc
+| * a74ac77 2013-09-06 Tibor Kiss  Update startup scripts
+| * 691aa8f 2013-09-06 Tibor Kiss  Shorten levelname to 1 char in logging
+| *   317d88f 2013-09-05 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-ext/huba
+| |\  
+| * | 9600eab 2013-09-05 Tibor Kiss  ibgw start script
+| * | f600de0 2013-09-05 Tibor Kiss  Create separate startup files for paper and live trading
+| * | 457b3fd 2013-09-05 Tibor Kiss  Disable proxy in filter results
+| * | 571de6a 2013-09-05 Tibor Kiss  Create paper and live trading TWS start scripts
+| * | f0ec90a 2013-09-04 Tibor Kiss  Add IPython shell banner
+| * | 8fdd3e1 2013-09-04 Tibor Kiss  Add TWS Connection string as command line argument
+| * | 49d83a4 2013-09-03 Tibor Kiss  Added mass backtest result filter app
+* | | 1066b43 2013-09-06 Tibor Kiss  updated trade logs
+* | | 34a0761 2013-09-06 Tibor Kiss  updated jts config: ibgw
+| |/  
+|/|   
+* | 6d461c1 2013-09-04 Tibor Kiss  update TWS Config: Enable access from jahbook
+|/  
+* 4c07c12 2013-08-28 Tibor Kiss  No idea what has changed in the screen start applescript ;(
+* 19c2168 2013-08-28 Tibor Kiss  Update huba start file:  - Replace AZPN_MXIM with EZA_EWH  - Change the stock order in the rest of the pairs where it is necessary
+* 1eeac08 2013-08-28 Tibor Kiss  add all the actual stocks to google intra fetch
+* a1b5192 2013-08-28 Tibor Kiss  updated crontab: start tws at 14:10 now
+* 5d0930f 2013-08-28 Tibor Kiss  Updated jts config, added EZA & EWH to news watch list
+*   d3f0979 2013-08-28 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-ext/huba
+|\  
+| * 3a4928e 2013-08-05 Tibor Kiss  Enable exception handling for backtesting list back
+| * 431ad0f 2013-08-05 Tibor Kiss  remove exception handler temporarily
+| * 4a438d7 2013-08-05 Tibor Kiss  Update pycharm project files
+| * ba150df 2013-08-05 Tibor Kiss  Added requirements for stock picking
+| * e8953da 2013-08-05 Tibor Kiss  Fix mass backtesting using backtest-list
+| * be275cb 2013-08-05 Tibor Kiss  Refactor csv_tools for beauty contest
+| * c8960d2 2013-08-05 Tibor Kiss  Print out the pairs in the create_pairs.py
+| * fddea5c 2013-08-05 Tibor Kiss  Initial version of pair creator for etfs
+* | b44b908 2013-08-28 Tibor Kiss  updated paper trading logs
+* | fe04a82 2013-08-28 Tibor Kiss  increased TWS size, added news window
+* | 6018bdf 2013-08-26 Tibor Kiss  updated trading log
+|/  
+*   b81e3e6 2013-08-02 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-ext/huba
+|\  
+| * d080e89 2013-08-01 Tibor Kiss  update paper trading log
+* | 3fd7af5 2013-08-02 Tibor Kiss  increase iterm window height
+|/  
+* 898dcd9 2013-07-26 Tibor Kiss  update live trading logs
+* f7537be 2013-07-11 Tibor Kiss  update paper trading logs
+* 961c001 2013-07-05 Tibor Kiss  rename live.csv to trades.csv
+* 98beedf 2013-07-05 Tibor Kiss  rename equity.csv
+*   bccfcea 2013-07-05 Tibor Kiss  Merge of CreateTestcases branch
+|\  
+| *   596ca13 2013-07-05 Tibor Kiss  Merge remote-tracking branch 'remotes/origin/master' into CreateTestcases
+| |\  
+| * | 577be13 2013-07-05 Tibor Kiss  Increase Sharpe requirement and reduce maximal acceptable drawDownDays in SystemTests
+| * | b2f7552 2013-07-05 Tibor Kiss  Huba beauty contest
+| * | 225500a 2013-07-05 Tibor Kiss  Shut up logging in statarb basic test
+| * | a02d8b3 2013-07-05 Tibor Kiss  Fix the basic testcases
+| * | c263f9e 2013-07-05 Tibor Kiss  Fix issues in _initPositionState
+| * | 90d5a6d 2013-07-03 Tibor Kiss  Fix a couple of system testcases
+| * | 6242a53 2013-07-03 Tibor Kiss  StatArbStrategy beauty contest
+| * | ca087ba 2013-07-03 Tibor Kiss  Streamline CSV logger functions
+| * | 0ea48a5 2013-07-02 Tibor Kiss  Complete BrokerAgent testcase
+| * | 05d910c 2013-07-01 Tibor Kiss  Rename BrokerAgent_BasicTest into BrokerAgent_Test
+| * | 1451cda 2013-07-01 Tibor Kiss  config.py beauty contest
+| * | 2a68ea5 2013-07-01 Tibor Kiss  Test BrokerAgent basic functions
+| * | 43235d3 2013-07-01 Tibor Kiss  Use bool field for the subscribeRealtimeBars function
+| * | 0659ce9 2013-07-01 Tibor Kiss  Create separate testcase for analyzer
+| * | cc6c007 2013-06-25 Tibor Kiss  Refactor BrokerAgent: Move the Analyzer and Plotter into members
+| * | 125be0d 2013-06-24 Tibor Kiss  Refactor BrokerAgent: Move the CSV Logger functions under tools.csv_tools
+| * | 752946d 2013-06-24 Tibor Kiss  Refactor BrokerAgent: change variable scopes
+| * | 23fa57f 2013-06-24 Tibor Kiss  Refactor BrokerAgent: Move the statistics and plotting under analyzer package
+| * | 1aa1562 2013-06-24 Tibor Kiss  Initial version of testRunStrategy
+| * | 805df2e 2013-06-24 Tibor Kiss  Add return values for all  operations in huba
+| * | 7c6e371 2013-06-24 Tibor Kiss  Add generic range verifier function and fix combined testcase
+| * | 6da2dd6 2013-06-24 Tibor Kiss  Fix the day and bar counting in loadBacktestFeed
+| * | da59dfa 2013-06-21 Tibor Kiss  Update idea project file
+| * | 93b8fff 2013-06-21 Tibor Kiss  beauty contest
+| * | e8f3251 2013-06-21 Tibor Kiss  Use multiple patches in statarb basic test
+| * | e013088 2013-06-21 Tibor Kiss  Add all the currently used pairs
+| * | c69f06f 2013-06-21 Tibor Kiss  Beauty contest
+| * | 3b4693b 2013-06-21 Tibor Kiss  Add mute parameter
+| * | ddc8dc9 2013-06-20 Tibor Kiss  Add SystemTest to the runtests. Fix DHR_WAT testcase and the getTestcases() function
+| * | db6741e 2013-06-20 Tibor Kiss  Create first version of system test using 3 pairs. Horray
+| * | 7fcdc18 2013-06-20 Tibor Kiss  Get rid of unnecessary initialization code from HubaTest
+| * | 27866a3 2013-06-20 Tibor Kiss  Add arguments parameter to the main function and return the stats for backtest
+| * | 6b70253 2013-06-19 Tibor Kiss  Fix RiskManager creation in the BrokerAgent
+| * | d423a37 2013-06-19 Tibor Kiss  Streamline RiskManager
+| * |   3b6ea8c 2013-06-11 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-ext/huba into CreateTestcases
+| |\ \  
+| * | | 3f26a28 2013-06-10 Tibor Kiss  Add text representation to RiskManager class
+| * | | fa88196 2013-06-10 Tibor Kiss  Add testcase skeletons and dynamic testcase collector
+| * | | 35c7a28 2013-06-09 Tibor Kiss  Added tools.business_days testcase
+| * | | a519e5c 2013-06-09 Tibor Kiss  Cleanup business days
+| * | | 64d4369 2013-06-09 Tibor Kiss  Fix the tools testcase
+| * | | 244770d 2013-06-09 Tibor Kiss  Use pyalgotrade.Bar in the reduceBars
+| * | | 73a3d27 2013-06-08 Tibor Kiss  Rename testcases
+* | | |   0b95105 2013-07-05 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-ext/huba
+|\ \ \ \  
+| |/ / /  
+|/| | |   
+| * | | 63fb353 2013-07-04 Tibor Kiss  reduce logging giberish (milliseconds, thread name)
+| * | | cc53499 2013-07-04 Tibor Kiss  update live trading results
+| * | | ded036c 2013-07-04 Tibor Kiss  New configuration for increased resolution: now iTerm + TWS is shown in the screen
+| * | | c95223e 2013-07-04 Tibor Kiss  Startup Apple Script to show the screen terminal in iTerm window
+| | |/  
+| |/|   
+| * | d9403cb 2013-06-18 Tibor Kiss  update live trading logs
+| |/  
+| * ad88f38 2013-06-11 Tibor Kiss  update live trading logs
+* | 97ddb66 2013-06-08 Tibor Kiss  get rid of old testcase
+|/  
+* d35403f 2013-06-07 Tibor Kiss  update live results
+* dfc58a2 2013-06-03 Tibor Kiss  added TWS config file
+* 4a540ac 2013-06-03 Tibor Kiss  update jts config
+* da96716 2013-06-03 Tibor Kiss  download the daily data for the current year
+* 30475a4 2013-06-01 Tibor Kiss  update trade log
+* e3ef17c 2013-05-22 Tibor Kiss  update paper trading results
+* 730594a 2013-05-16 Tibor Kiss  reduce ZScore eval frequency to 10 minutes
+*   05bec1f 2013-05-14 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-ext/huba
+|\  
+| * e781b8e 2013-05-14 Tibor Kiss  reduce ZScore Eval Frequency to 30 minutes
+* | e5fcd2c 2013-05-14 Tibor Kiss  update live trading info
+* | 07a0097 2013-05-14 Tibor Kiss  update jts config
+|/  
+* b57959e 2013-05-08 Tibor Kiss  replace CVH_MD pair with AZPN_MXIM
+* 2d21983 2013-05-08 Tibor Kiss  Add two more pairs (Lilla)
+* f177f5f 2013-05-07 Tibor Kiss  Update live trading pairs, replacing most of the PTL pairs with Nasdaq backtest results
+*   508f75a 2013-05-07 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-ext/huba
+|\  
+| * dcdc2bf 2013-05-07 Tibor Kiss  fix stop script
+* | ff4f731 2013-05-07 Tibor Kiss  Marked the tradable pairs
+* | 2619b36 2013-05-07 Tibor Kiss  Added onDayStart and onDayEnd functions
+* | 8ebea33 2013-05-07 Tibor Kiss  Subtract missing commission for the entry in case of live trading
+* | 76d2ba7 2013-05-06 Tibor Kiss  move yahoo url file
+* | f777c67 2013-05-06 Tibor Kiss  Added Nasdaq search results
+* | 8949b2c 2013-05-05 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-ext/huba
+|\| 
+| * 7530d2d 2013-05-04 Tibor Kiss  update live trading
+| * f3e68e4 2013-05-04 Tibor Kiss  update tws config
+* | 5a3e2d8 2013-05-05 Tibor Kiss  Nasdaq results
+* | 10322f7 2013-05-05 Tibor Kiss  move quantquote order
+* | a6e7186 2013-05-05 Tibor Kiss  Add dependency list to TODO
+* | 0f4964f 2013-05-05 Tibor Kiss  result processing script
+* | 7ee4353 2013-05-05 Tibor Kiss  Rename nasdaq pair creator script
+* | f8810a8 2013-05-05 Tibor Kiss  Rename nasdaq pairs
+* | c86b1ba 2013-05-05 Tibor Kiss  Rename nasdaq pairs
+|/  
+*   884b5d9 2013-05-02 Tibor Kiss  Merge branch 'StatArb'
+|\  
+| *   4f07b4c 2013-05-02 Tibor Kiss  Merge branch 'StatArb' of ssh://jahdisk-ext/huba into StatArb
+| |\  
+| | * 46d8295 2013-05-02 Tibor Kiss  added tws logs
+| | * 40d6248 2013-05-02 Tibor Kiss  added screenshots
+| | * 8a5bab1 2013-05-02 Tibor Kiss  Updated trading logs
+| | * 523f8ea 2013-05-02 Tibor Kiss  updated IBController
+* | | d3818b0 2013-05-02 Tibor Kiss  Merge branch 'StatArb'
+|\| | 
+| * | 4c764b8 2013-05-02 Tibor Kiss  Updated todo
+| |/  
+| * c3c7f5d 2013-05-01 Tibor Kiss  rename
+| * 62cfce9 2013-05-01 Tibor Kiss  update jts
+| * dab1cbe 2013-05-01 Tibor Kiss  finalize new jts
+| * b6d8153 2013-05-01 Tibor Kiss  rename TWS dir
+| * 5a80885 2013-05-01 Tibor Kiss  added latest TWS Version
+| *   4f99e37 2013-05-01 Tibor Kiss  Merge branch 'StatArb' of jahdisk-ext:huba into StatArb
+| |\  
+| | *   f8d0cf5 2013-05-01 Tibor Kiss  Merge branch 'StatArb' of ssh://jahdisk-ext/huba into StatArb
+| | |\  
+| | * | 6b42874 2013-05-01 Tibor Kiss  Add extra docs
+| | * | 2f9f02c 2013-05-01 Tibor Kiss  Add some docs
+| | * | 6b4a9d6 2013-05-01 Tibor Kiss  Add socks, daterange and google sms tools
+| | * | 6279dac 2013-05-01 Tibor Kiss  Add nasdaq backtesting data & tools
+| | * | 9179ed4 2013-05-01 Tibor Kiss  Update backtest file
+| | * | 1c69b45 2013-05-01 Tibor Kiss  get rid of old file
+| | * | f4c1e64 2013-05-01 Tibor Kiss  Cosmetical
+| | * | 68c6030 2013-05-01 Tibor Kiss  Added two new bugs
+| * | | b2687ae 2013-05-01 Tibor Kiss  get rid of old gitignore
+| * | | 92aaa3e 2013-05-01 Tibor Kiss  added IBController.ini file
+| | |/  
+| |/|   
+| * | 084f67a 2013-05-01 Tibor Kiss  Merge branch 'StatArb' of jahdisk-ext:huba into StatArb
+| |\| 
+| | * 732cc4b 2013-04-29 Tibor Kiss  added mass backtest scripts
+| * | e43327c 2013-05-01 Tibor Kiss  update trading log
+| * | 1d8346c 2013-05-01 Tibor Kiss  updated gitignore file
+| * | 46ba304 2013-04-29 Tibor Kiss  put screenshots into root dir, get rid of day based sorting there
+| * | e68687d 2013-04-29 Tibor Kiss  fix huba screen stop
+| |/  
+| * cbc7f14 2013-04-29 Tibor Kiss  added VDE_UHN pair
+| * b2405fe 2013-04-29 Tibor Kiss  added path
+| * 945e6ac 2013-04-29 Tibor Kiss  get rid of Simon's rounding function
+| * c588aee 2013-04-29 Tibor Kiss  Get rid of the old (5 min gap) tools
+| * 5f44dc2 2013-04-29 Tibor Kiss  Added simple cache for loadHistoricalBars
+| * 7f89d80 2013-04-28 Tibor Kiss  update crontab: more frequent screenshot, google intraday fetch
+| * e6a4a5f 2013-04-28 Tibor Kiss  added google data downloader
+| *   0ef1624 2013-04-26 Tibor Kiss  Merge remote-tracking branch 'origin/StatArb' into StatArb
+| |\  
+| | * b6270b1 2013-04-26 Tibor Kiss  update live log
+| * | 4048828 2013-04-26 Tibor Kiss  Make it compatible with pyalgotrade-0.12
+| * | 075fc7e 2013-04-26 Tibor Kiss  Network outage bugreport
+| * | 05127f0 2013-04-26 Tibor Kiss  Unsubscribe from feed only at backtesting
+| |/  
+| * 75ecb3d 2013-04-23 Tibor Kiss  get rid of statarb wording
+| * 11ca15e 2013-04-23 Tibor Kiss  update crontab file
+| *   54d451e 2013-04-23 Tibor Kiss  Merge branch 'StatArb' of ssh://jahdisk-ext/huba into StatArb
+| |\  
+| | * 7024f40 2013-04-23 Tibor Kiss  add tws start script
+| | * 0571af7 2013-04-23 Tibor Kiss  fix run scripts
+| * | 34ee921 2013-04-23 Tibor Kiss  Use live logger in statarb
+| * | 587a500 2013-04-23 Tibor Kiss  Add tags to huba
+| * | 8748325 2013-04-23 Tibor Kiss  Add tags and live result logger to BrokerAgent
+| * | 48a8658 2013-04-23 Tibor Kiss  Add tags to generateStrategyParms
+| * | cbd8bf8 2013-04-23 Tibor Kiss  Use tags while saving results
+| * | fa91f0f 2013-04-23 Tibor Kiss  Restructure result file
+| * | 3edd97a 2013-04-23 Tibor Kiss  Add live trading log file
+| * | 92bf206 2013-04-23 Tibor Kiss  Add directory keeper files
+| * | f6105f9 2013-04-23 Tibor Kiss  1 Minute stock data for AVB_BRE, CXO_PSE, DHR_WAT, MTW_TEX
+| * | 25e0ab4 2013-04-22 Tibor Kiss  Refactor huba_statarb to huba, statarb_config to config
+| * | 94359ce 2013-04-22 Tibor Kiss  Add -5 - 5 limit to y
+| * | 837b149 2013-04-22 Tibor Kiss  add displayPlot and savePlot to backtest and backtest-all options
+| * | c97b768 2013-04-22 Tibor Kiss  Disable frame for legends
+| * | aca6943 2013-04-22 Tibor Kiss  Add buy/sell signal to analyzer
+| * | 6a259b7 2013-04-22 Tibor Kiss  Added new bug, should be related to the previous 'not received heartbeat' msg
+| * | 5a670c1 2013-04-22 Tibor Kiss  Create strategy.analyzer module to calculate, display, save and plot statistics
+| * | 1adb4d0 2013-04-22 Tibor Kiss  Disable unused stats in StatArbStrategy
+| * | 19d9eb0 2013-04-22 Tibor Kiss  Added InitialEquity and Daily Returns getter to the BrokerAgent
+| * | b49de39 2013-04-22 Tibor Kiss  Added matplotlibrc
+| * | 9d7f544 2013-04-22 Tibor Kiss  Add bug
+| * | 509bd3a 2013-04-22 Tibor Kiss  Make the quantquote 2 huba tool executable
+| * | 63844ed 2013-04-22 Tibor Kiss  Add Averaged OLS Window Bars. Fix OLS Window bar bug: the data was not sorted from loadedHistoricalBars
+| * | 3ba59f1 2013-04-22 Tibor Kiss  Start to work on plotting
+| * | e97cc52 2013-04-22 Tibor Kiss  Add DataSequence for price, zScore, spread and hedge ratio plotting
+| * | a7b74bc 2013-04-21 Tibor Kiss  Update RiskManager's trade capital every day
+| * | a5f6746 2013-04-17 Tibor Kiss  get rid of fivemin strategy
+| * | 8da60f6 2013-04-17 Tibor Kiss  add a couple of test pairs from web search
+| * | bbfcafb 2013-04-17 Tibor Kiss  add cpp plugin to idea
+| * | b0a9a7a 2013-04-17 Tibor Kiss  use all cmd line parameter extract_uniq_pairs.sh
+| * | 3d08bcf 2013-04-17 Tibor Kiss  script to extract unique pairs from the results.csv file
+| |/  
+| * 17d6225 2013-04-17 Tibor Kiss  Start a new result file, based on daily sharpe calculation
+| * 90d2854 2013-04-17 Tibor Kiss  Use daily Sharpe ratio analyzer
+| * 010cacc 2013-04-17 Tibor Kiss  Add AU_GFI, BHK_MVF, FOF_HYV and SWX_WR to traded pairs
+| * 068f30d 2013-04-16 Tibor Kiss  Shorten ZScore update frequency to 15 minutes for the working pairs
+| * b9eb8b3 2013-04-16 Tibor Kiss  streamline optimize and backtest routines
+| * 6751595 2013-04-16 Tibor Kiss  Only process bars from RTH in BrokerAgent
+| * 45cddde 2013-04-16 Tibor Kiss  Remove timezone from the RowParsers
+| * fe7ff49 2013-04-16 Tibor Kiss  Rework the ZScore calculation in onBars
+| * 280f9db 2013-04-16 Tibor Kiss  Fix the DateTime printout in QuantQuote to NT converter
+| * 563ee63 2013-04-15 Tibor Kiss  cosmetical changes
+| * 704f918 2013-04-13 Tibor Kiss  Initial add of results.csv
+| * 58fc74a 2013-04-13 Tibor Kiss  restructure configurations
+| * 1444b28 2013-04-13 Tibor Kiss  add pairs parameter to live trading
+| * 224375b 2013-04-13 Tibor Kiss  Fix Sharpe ratio calculation in BrokerAgent
+| * 8463f23 2013-04-13 Tibor Kiss  Add BrokerAgent based Sharpe calculator
+| * f60f9eb 2013-04-12 Tibor Kiss  Use OHLC/4 in OLS Window Bars - Fixed
+| * 1550f3a 2013-04-12 Tibor Kiss  Use OHLC/4 in OLS Window Bars
+| * 0bc1df9 2013-04-12 Tibor Kiss  Support Minutely bars at analyzers, clean up runStrategy
+| * 849164c 2013-04-12 Tibor Kiss  Add some comments
+| * 1bb7dd1 2013-04-12 Tibor Kiss  Detail profit by instrument
+| * 59773ec 2013-04-12 Tibor Kiss  Print Profit per Trades
+| * 2f569af 2013-04-11 Tibor Kiss  Shut up IB Debug ;)
+| *   2cf1a2d 2013-04-11 Tibor Kiss  Merge branch 'StatArb' of ssh://jahdisk-ext/huba into StatArb
+| |\  
+| | *   feee07d 2013-04-11 Tibor Kiss  Merge branch 'StatArb' of jahdisk-ext:huba into StatArb
+| | |\  
+| | * | 186b48c 2013-04-11 Tibor Kiss  fix startup scripts
+| | * | d340f0b 2013-04-11 Tibor Kiss  fix IBController startup script
+| * | | 1013c4d 2013-04-11 Tibor Kiss  embed ipython in live runs
+| | |/  
+| |/|   
+| * | f06df03 2013-04-11 Tibor Kiss  Support Minute bars
+| * | fa03315 2013-04-11 Tibor Kiss  QuantQuote to NT converter script
+| * | 5e583fe 2013-04-11 Tibor Kiss  update coding style
+| * | 7fd807d 2013-04-11 Tibor Kiss  add idea config
+| |/  
+| * dea4803 2013-04-08 tibkiss  use ~ instead of Mac OS Home dir in the IB Controller script
+| * ac90538 2013-04-08 Tibor Kiss  Added AVB_BRE pair
+| * aef107a 2013-04-08 Tibor Kiss  Increase trade capital to 30k
+| * 443cccf 2013-04-08 Tibor Kiss  Always download the CSV file for the actual year
+| * 283f6e7 2013-04-08 Tibor Kiss  Reduce qty warning
+| * b42ccad 2013-04-08 Tibor Kiss  Enable results.csv in logs dir
+| * b621e90 2013-04-08 Tibor Kiss  Configuration file with a couple of pairs
+| * d5b956a 2013-04-08 Tibor Kiss  StatArb cleanup
+| * c92e896 2013-04-08 Tibor Kiss  backtest-all and saveResults functionality
+| * e6beff8 2013-04-05 Tibor Kiss  Use RiskManager for position sizing and add extra dataseries for drawing
+| * f70a516 2013-04-05 Tibor Kiss  Move parameter generator to statarb_config
+| * 3b9668c 2013-04-05 Tibor Kiss  Use RiskManager and RealisticFillStrategy in BrokerAgent
+| * c3dd002 2013-04-05 Tibor Kiss  Reconstruct risk manager for pair trading
+| * 723a2aa 2013-04-05 Tibor Kiss  Extend PessimisticFillStrategy, add RealisticFillStrategy
+| * 4a9602c 2013-04-04 Tibor Kiss  Fix exit criteria
+| * 32f6443 2013-04-04 Tibor Kiss  Subscribe to realtime bars
+| * 28633c4 2013-04-04 Tibor Kiss  Support multiple instruments
+| * 6fb645e 2013-04-04 Tibor Kiss  Add optimization
+| * eaec715 2013-04-04 Tibor Kiss  Get rid of ib connection in the data downloader
+| * ae3be7c 2013-04-04 Tibor Kiss  Add strategy analyzer, plotter and enhance the StatArb's exit criteria
+| * ad42837 2013-04-03 Tibor Kiss  Get it working: Strategy trades as expected, analyzers and plot added
+| * 67a7bf0 2013-04-03 Tibor Kiss  Support daily bars in statarb
+| * 512cacf 2013-04-03 Tibor Kiss  Use daily bars for backtesting
+| * c0f97c1 2013-04-03 Tibor Kiss  Added Yahoo downloader and RowParser to csv_tools
+| * b20a2a0 2013-04-03 Tibor Kiss  cosmetical fixes ]
+| * 41e61f9 2013-04-03 Tibor Kiss  Create configuration file
+| * 6f8d783 2013-04-03 Tibor Kiss  Top level statarb executable
+| * 46f26df 2013-04-03 Tibor Kiss  Add zScore calculation to StatArbStrategy
+| * b0c5c00 2013-04-03 Tibor Kiss  Standalone tool to downscale minute csv files to days
+| * 08ce950 2013-04-03 Tibor Kiss  Support daily bars
+| * efe88ea 2013-04-03 Tibor Kiss  Re-create StatArbStrategy every day in backtesting
+| * a7d9418 2013-04-03 Tibor Kiss  Fix downscaleBarsInTime, extend pessimistic fill strategy
+| * 29d9fb4 2013-03-29 Tibor Kiss  added downscaleBarsInTime
+| * 4aa5763 2013-03-28 Tibor Kiss  add instrument to onBars in FiveMin strategy
+| * 5d6bad2 2013-03-28 Tibor Kiss  cosmetical fixes
+| * ecf54e2 2013-03-28 Tibor Kiss  added instrument to the onBars function in the parent strategy class
+| * d88f389 2013-03-28 Tibor Kiss  added business_days module with goback() function. helper for the OLS  calculation
+| * f9270e4 2013-03-28 Tibor Kiss  add alignBarList function with test
+| * 18bd99d 2013-03-27 Tibor Kiss  StatArb cleanup, _initPositionState() implemented with testcase
+| * e1eb60c 2013-03-26 Tibor Kiss  removed old files
+| * 8de29d3 2013-03-26 Tibor Kiss  remove old files
+| * 9240131 2013-03-25 Tibor Kiss  remove nonused file
+| * d81f203 2013-03-25 Tibor Kiss  cosmetical changes in statarb
+| * 498b0bc 2013-03-25 Tibor Kiss  remove test data
+| * 27bafec 2013-03-25 Tibor Kiss  cosmetical changes in csv_tools
+| * 62901cf 2013-03-25 Tibor Kiss  cosmetical changes in brokeragent
+| * 825a65e 2013-03-25 Tibor Kiss  idea project update
+| * 2c96519 2013-03-25 Tibor Kiss  IDEA configuration
+| * c4c5e83 2013-03-25 Tibor Kiss  Initial version of loadHistocalBars with testcase
+| * 1581435 2012-11-20 Tibor Kiss  fix result calculation in case of single day backtesting
+| * afdea73 2012-11-20 Tibor Kiss  fix gitignore
+| * 62473d2 2012-11-20 Tibor Kiss  refactor, last step
+| * b50e8c4 2012-11-20 Tibor Kiss  statarb snippets
+| * 742f4f9 2012-11-20 Tibor Kiss  add missing files
+| * f24a9b5 2012-11-20 Tibor Kiss  refactor for statarb
+* | 76600e1 2013-04-09 Tibor Kiss  ibcontroller.ini file
+|/  
+* ac3b809 2012-11-15 Tibor Kiss  fix testcases
+* befd859 2012-11-13 Tibor Kiss  some extra debug msg
+* 9a91188 2012-11-13 Tibor Kiss  Added Fill Startegy
+* 4e526b8 2012-10-29 Tibor Kiss  adjust spec position parameters
+* 7e83460 2012-10-29 Tibor Kiss  fix sharpe ratio
+* 187255f 2012-10-29 Tibor Kiss  remove hardwired trade capital
+* 99002cd 2012-10-15 Tibor Kiss  check if open == close in the isEntryAllowed()
+* 18e76fd 2012-10-11 Tibor Kiss  add fill price to profit position printouts
+* 119c378 2012-10-11 Tibor Kiss  get rid of try, finally from brokeragent.run. eats all exceptions :S
+* dabb91d 2012-10-11 Tibor Kiss  Adjust trailing stop-loss parameters: Days: 183, Winners: 200, Losers: 176, NotEntered: 798, Profit: 2766.87, Sharpe: 3.18, MaxDrawDown: 2.94 %, MaxDrawDuration: 26 days, Return: 27.67 %
+* 96e39b6 2012-10-10 Tibor Kiss  fix trailing stop
+* 502c03b 2012-10-09 Tibor Kiss  add SpecPositionState.EntryNotAllowed as valid state for cancelEntry
+* c14adf7 2012-10-09 Tibor Kiss  cancel orders if entry check bar is broken
+* ae439c7 2012-10-09 Tibor Kiss  performance log update
+* ec41d6e 2012-10-09 Tibor Kiss  clean up end stats
+* 1425d69 2012-10-09 Tibor Kiss  beauty contest
+* b39b404 2012-10-09 Tibor Kiss  update performancelog
+*   9645c83 2012-10-09 Tibor Kiss  Merge branch 'refactor_20120922'
+|\  
+| * c9418bf 2012-10-09 Tibor Kiss  added missing files
+* | 1598ae4 2012-10-09 Tibor Kiss  Merge branch 'refactor_20120922'
+|\| 
+| * 0fcadb9 2012-10-09 Tibor Kiss  fix empty positions again
+| * 4d8b27c 2012-10-09 Tibor Kiss  fix instrument check, if no instruments specified None is returned by optparse
+| * 11b3d29 2012-10-09 Tibor Kiss  fix ibbroker construction
+| * 1fd3fb6 2012-10-09 Tibor Kiss  optimize results
+| * 05b6d73 2012-10-09 Tibor Kiss  baseline
+| * d864bc9 2012-10-09 Tibor Kiss  update ipython script
+| * bc22125 2012-10-09 Tibor Kiss  save results to pkl file
+| * 51e4db6 2012-10-09 Tibor Kiss  use ints for Qtys, pimp up isEntryAllowed,
+| * 436df49 2012-10-09 Tibor Kiss  fix scanMarket scheduling, profit calculation
+| * 18275c7 2012-10-08 Tibor Kiss  fix testcase, OrderExecutionInfo's constructor changed
+| * c6d42fc 2012-10-08 Tibor Kiss  add High-Lo range for stop-loss price
+| * 58a32fb 2012-10-08 Tibor Kiss  remove home dir hardwiring
+| * d56d71e 2012-10-08 Tibor Kiss  add testcase for adjustStopLossQty
+| * 02d43dd 2012-10-08 Tibor Kiss  add sharpe ratio from Gabriel
+| * fb3f03d 2012-10-08 Tibor Kiss  add effective risk
+| * 87d9c19 2012-10-08 Tibor Kiss  get rid of old file
+| * 07e123a 2012-10-08 Tibor Kiss  add some stats
+| * 44657c5 2012-10-08 Tibor Kiss  add FlatRateCommission to RiskManager, don't disconnect from ib
+| * e9c49fc 2012-10-07 Tibor Kiss  backtest data
+| * 1018735 2012-10-07 Tibor Kiss  add new prices to testCreateOrderParms testcase
+| * 0873b85 2012-10-07 Tibor Kiss  fix adjustStopLossQty
+| * e270ad5 2012-10-07 Tibor Kiss  use the new result interface
+| * 033f746 2012-10-07 Tibor Kiss  added calculateResult/getResult to brokerAgent
+| * 8c07dc5 2012-10-06 Tibor Kiss  update to latest pyalgotrade
+| * 6b8ee95 2012-10-06 Tibor Kiss  fix atr
+| * 9ac8a4b 2012-10-06 Tibor Kiss  added calculateResult
+| * 9b27cea 2012-10-06 Tibor Kiss  added ATR, bar downscaler
+| * 0656a63 2012-10-05 Tibor Kiss  place created orders, fix testcases
+| * f401b84 2012-10-05 Tibor Kiss  fix risk manager to not to return negativ qty, add more testcases
+| * 8074138 2012-10-04 Tibor Kiss  cosmetical
+| * 15ccfc3 2012-10-04 Tibor Kiss  fix order state confusion
+| * 6c74b3c 2012-10-04 Tibor Kiss  fix run
+| * 11892dc 2012-10-04 Tibor Kiss  get rid of trace dumper
+| * ce33b2d 2012-10-04 Tibor Kiss  fix specposition testcases
+| * 38000ca 2012-10-04 Tibor Kiss  no need to call stop() @ top level anymore
+| * 90af4d3 2012-10-04 Tibor Kiss  fix riskmanager handling
+| * 140fb4d 2012-10-03 Tibor Kiss  fixin brokeragent
+| * 1742149 2012-10-03 Tibor Kiss  fix file permissions
+| * 85217b1 2012-10-02 Tibor Kiss  finish up onBars() testcase
+| * 6ba1db5 2012-10-02 Tibor Kiss  working on brokeragent testcases
+| * 9db4613 2012-10-02 Tibor Kiss  fix constructor test, extend stop test
+| * 2cc16a7 2012-10-02 Tibor Kiss  initial onBars test
+| * 8e43ee4 2012-10-02 Tibor Kiss  replace fixed _9_35 (entry check state) with variable length checkBarTickLen
+| * 263b1f0 2012-10-01 Tibor Kiss  cosmetical
+| * 55b5610 2012-10-01 Tibor Kiss  make it work with specposition
+| * f404f56 2012-10-01 Tibor Kiss  _riskPerShare is removed from SpecPosition, added test for order state in profits
+| * e41d075 2012-10-01 Tibor Kiss  add logging, beauty parlol
+| * d3adfae 2012-10-01 Tibor Kiss  add code from strategy, dispatch order updates to strategy
+| * a0f0cc4 2012-10-01 Tibor Kiss  get rid of old code
+| * a1a6559 2012-10-01 Tibor Kiss  fix isEntryAllowed testcase
+| * ad2fdaa 2012-10-01 Tibor Kiss  use all the testcases
+| * c089c68 2012-10-01 Tibor Kiss  added rounding test snippet from the original java code
+| * f04231a 2012-10-01 Tibor Kiss  added riskmanager
+| * c268d79 2012-10-01 Tibor Kiss  fix riskmanager testcase
+| * ec347f5 2012-10-01 Tibor Kiss  remove old testcase
+| * e470abc 2012-09-30 Tibor Kiss  fix price rounding testcase
+| * 7bf75e9 2012-09-29 Tibor Kiss  new testcases
+| * 033b148 2012-09-29 Tibor Kiss  add Simon's price rounding method
+| * 9a7696b 2012-09-29 Tibor Kiss  add testcases for price rounding
+| * 94600a6 2012-09-29 Tibor Kiss  cosmetical
+| * abbd712 2012-09-29 Tibor Kiss  get rid of old testcase
+| * b03542a 2012-09-29 Tibor Kiss  subscribe to realtime feed only in live sessions
+| * b5f091a 2012-09-29 Tibor Kiss  add specposition logic test
+| * d13a19e 2012-09-29 Tibor Kiss  include specposition logic test to the suite
+| * d0cb714 2012-09-29 Tibor Kiss  start to clean up brokeragent, fix parameters
+| * b828f7d 2012-09-29 Tibor Kiss  adjustStopLoss renamed to adjustStopLossQty
+| * 1d01bff 2012-09-29 Tibor Kiss  check for SpecPosition's parms
+| * 9f6bb10 2012-09-29 Tibor Kiss  Added timestamps, add rounding to createOrderParms
+| * 8140ef6 2012-09-29 Tibor Kiss  pimp up SpecPositionParms, add createOrderParms stub
+| * 4da5aff 2012-09-28 Tibor Kiss  added on*Filled routines and testcases
+| * 079ee21 2012-09-23 Tibor Kiss  added createEntry
+| * 083af03 2012-09-23 Tibor Kiss  remove old mock testcase
+| * b95c852 2012-09-23 Tibor Kiss  create specposition_basictests
+| * 9e61ea8 2012-09-23 Tibor Kiss  Add testcases for Orders
+| * da17c55 2012-09-22 Tibor Kiss  test SpecPositionState uniqueness
+| * 7222995 2012-09-22 Tibor Kiss  make the SpecPositionStates unique
+| * 7bc78a2 2012-09-22 Tibor Kiss  created cancelEntry(), added testcases for recordBar and cancelEntry
+| * 306fa7a 2012-09-22 Tibor Kiss  finalize SpecPositionState, make it iterable
+| * dfff065 2012-09-22 Tibor Kiss  added SpecPositionState
+| * 8178399 2012-09-22 Tibor Kiss  added recordBar
+|/  
+* d792acd 2012-09-22 Tibor Kiss  add accountcodes
+* 4110c2a 2012-09-22 Tibor Kiss  print all the strategy parms at the end
+* c4e463d 2012-09-22 Tibor Kiss  fix profit error range calculation when both the profits are 0
+* 961f7df 2012-09-22 Tibor Kiss  add pyalgotrade path to runtests
+* ed9400d 2012-09-22 Tibor Kiss  ignore RT csv cache files
+* 0dafd15 2012-09-22 Tibor Kiss  get rid of realtime data
+* f88f479 2012-09-22 Tibor Kiss  get rid of commented out parameters, use top gainers/losers in market scanner
+* d034c20 2012-09-22 Tibor Kiss  rename commission variable to commissionPerShare
+* 4a68d63 2012-09-18 Tibor Kiss   - added seconds to the market scan scheduler  - ignore most common etfs/etns  - increase the number of scanned stocks to 20, select first 15 out of    them
+* 91f0ae7 2012-09-17 Tibor Kiss  update gapper list
+* 828d9ee 2012-09-17 Tibor Kiss  store backtesting and realtime data from end of August till mid of September
+* 5ac985d 2012-09-17 Tibor Kiss  use IB Commission in sim and live runs. Seems like the commission is not included in the reported price @ IB.
+* f821e10 2012-09-17 Tibor Kiss  reducing the market scanner's volumeAbove to 250k. Getting better.
+* ab2e82f 2012-09-12 Tibor Kiss  set market scan time to 9:30:20
+* b1a9357 2012-09-12 Tibor Kiss  fix market scan time at 9:30
+* 4e1dfbf 2012-09-11 Tibor Kiss  increase volume in market scanner
+*   199d052 2012-09-11 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-ext/huba
+|\  
+| * 3837a51 2012-09-07 Tibor Kiss  increase volume for the marketscan
+* | f436868 2012-09-11 Tibor Kiss  increase volume for market scan
+* | 285da88 2012-09-11 Tibor Kiss  reference api added
+|/  
+*   db9cecf 2012-09-07 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-ext/huba
+|\  
+| * 8e09fad 2012-09-07 Tibor Kiss  fix ipy to use new hierarchy
+| * 8312bce 2012-09-07 Tibor Kiss  get rid of most active
+| * c9886ee 2012-09-07 Tibor Kiss  set the initial stock count to 1
+| *   1ca1c36 2012-08-28 Tibor Kiss  Merge branch 'master' of ssh://jahdisk-ext/huba
+| |\  
+| * | 3255301 2012-08-28 Tibor Kiss  updated crontab
+* | | 4b40ed3 2012-09-07 Tibor Kiss  re-enable waiting for tws start
+* | | 6362233 2012-09-07 Tibor Kiss  store stderr into a separate log file
+| |/  
+|/|   
+* | f8d6870 2012-08-28 Tibor Kiss  Add backtest data
+|/  
+* be4fc26 2012-08-28 Tibor Kiss  gapper list from huba live runs
+* f6eea08 2012-08-28 Tibor Kiss  fix pathes
+* 349c962 2012-08-28 Tibor Kiss  add csv cache for the first 1.5 trading weeks
+* e9d185d 2012-08-28 Tibor Kiss  3rdparty utils/libs: IBController, IBJts, IbPy
+* c005323 2012-08-28 Tibor Kiss  use config module
+* 60ea22c 2012-08-28 Tibor Kiss  use config module for pathes, rename iterateCSV to iterateCSVDaily and yield the last result from the daily list
+* ecbcd54 2012-08-28 Tibor Kiss  use config module for pathes
+* 4bd7a07 2012-08-28 Tibor Kiss  centralize pathes in config file
+* f373d46 2012-08-28 Tibor Kiss  fix the cash amount to $10k
+* 4f881e1 2012-08-28 Tibor Kiss  avoid loading realtime test data
+* 0bca138 2012-08-26 Tibor Kiss  update to latest version from jahtpc
+* f3d81ee 2012-08-26 Tibor Kiss  crontab for jahtpc added
+* aef19fc 2012-08-26 Tibor Kiss  Initial add
+* 2cd2d03 2012-08-26 Tibor Kiss  first commit

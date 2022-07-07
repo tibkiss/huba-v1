@@ -1,0 +1,29 @@
+PMCS - SPIL Pair for date range 2009 - 2014.
+1M Rows
+    $ gzcat .csvCache/HC-SPIL-1M*iqfeed.csv.gz .csvCache/HC-PMCS-1M*iqfeed.csv.gz | wc -l
+      1016312
+
+BTI - PM Pair for date range 2009 - 2014.
+1M rows:
+    $ gzcat .csvCache/HC-BTI-1M*iqfeed.csv.gz .csvCache/HC-PM-1M*iqfeed.csv.gz | wc -l                                                                           ⏎
+       1072026
+
+python 2.7.5 (Apple LLVM 5.0 (clang-500.0.68)) 
+  run1: PMCS_SPIL 
+      runtime: 91.48s user 0.68s system 99% cpu 1:32.29 total
+      ev / s : 11046
+      memory usage: 420mb
+  run2: BTI PM
+      runtime: 75.99s user 0.78s system 99% cpu 1:16.87 total
+      ev / s : 13922
+      memory usage: 380mb
+
+pypy 2.5 
+  run1 PMCS SPIL
+      runtime: 33.61s user 1.45s system 99% cpu 35.115 total 
+      ev / s : 29037
+      memory usage: 923mb 
+  run2 BTI PM
+      runtime: 28.64s user 1.53s system 99% cpu 30.370 total 
+      ev / s : 35298 
+      memory usage: 942mb 

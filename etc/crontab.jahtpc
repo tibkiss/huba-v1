@@ -1,0 +1,50 @@
+# Paths
+PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:/sbin:/usr/sbin:/usr/bin:/bin:/opt/X11/bin:/usr/X11/bin
+PYTHONPATH=/Users/tiborkiss/devel/workspace/stocks/huba
+
+50 6 * * 1-5 pmset sleepnow
+
+01 7 * * 1-5 /Users/tiborkiss/devel/workspace/stocks/huba/bin/monitor_logs.sh good_morning
+
+# Run tests right after wakeup
+# Tests backtests take 5 minutes to execute but it is worth while to check
+# the results after 5 minutes in case of unit tets fail
+01 7 * * 1-5 /Users/tiborkiss/devel/workspace/stocks/huba/bin/huba_run_tests.sh
+30 7 * * 1-5 /Users/tiborkiss/devel/workspace/stocks/huba/bin/monitor_logs.sh tests
+
+# Huba start & monitor 
+03 8 * * 1-5 open "/Users/tiborkiss/devel/workspace/stocks/huba/bin/TWS Paper.app"
+05 8 * * 1-5 open "/Users/tiborkiss/devel/workspace/stocks/huba/bin/TWS Real.app"
+10 8 * * 1-5 osascript /Users/tiborkiss/devel/workspace/stocks/huba/bin/huba_live_session_iterm.scpt
+15 8 * * 1-5 /Users/tiborkiss/devel/workspace/stocks/huba/bin/monitor_logs.sh live
+32 9 * * 1-5 /Users/tiborkiss/devel/workspace/stocks/huba/bin/monitor_logs.sh live
+10 12 * * 1-5 /Users/tiborkiss/devel/workspace/stocks/huba/bin/monitor_logs.sh live
+02 16 * * 1-5 /Users/tiborkiss/devel/workspace/stocks/huba/bin/monitor_logs.sh live
+
+# Huba stop & EOD
+50 17 * * 1-5 /Users/tiborkiss/devel/workspace/stocks/huba/bin/huba_stop.sh
+
+55 17 * * 1-5 /Users/tiborkiss/devel/workspace/stocks/huba/bin/monitor_logs.sh good_night
+
+# Screenshots
+31 9 * * 1-5 /Users/tiborkiss/devel/workspace/stocks/huba/bin/screenshot.sh
+01 10 * * 1-5 /Users/tiborkiss/devel/workspace/stocks/huba/bin/screenshot.sh
+01 11 * * 1-5 /Users/tiborkiss/devel/workspace/stocks/huba/bin/screenshot.sh
+01 12 * * 1-5 /Users/tiborkiss/devel/workspace/stocks/huba/bin/screenshot.sh
+01 13 * * 1-5 /Users/tiborkiss/devel/workspace/stocks/huba/bin/screenshot.sh
+01 14 * * 1-5 /Users/tiborkiss/devel/workspace/stocks/huba/bin/screenshot.sh
+01 15 * * 1-5 /Users/tiborkiss/devel/workspace/stocks/huba/bin/screenshot.sh
+01 16 * * 1-5 /Users/tiborkiss/devel/workspace/stocks/huba/bin/screenshot.sh
+
+# Google intra fetch
+#10 8 * * 1 /Users/tiborkiss/devel/workspace/stocks/huba/bin/google_intraday.sh get-traded 5
+#40 8 * * 1 /Users/tiborkiss/devel/workspace/stocks/huba/bin/google_intraday.sh get-from-file /Users/tiborkiss/devel/workspace/stocks/huba/docs/google_intra_fetch/google_intra_fetch.1 5
+#40 8 * * 2 /Users/tiborkiss/devel/workspace/stocks/huba/bin/google_intraday.sh get-from-file /Users/tiborkiss/devel/workspace/stocks/huba/docs/google_intra_fetch/google_intra_fetch.2 5
+#40 8 * * 3 /Users/tiborkiss/devel/workspace/stocks/huba/bin/google_intraday.sh get-from-file /Users/tiborkiss/devel/workspace/stocks/huba/docs/google_intra_fetch/google_intra_fetch.3 5
+#40 8 * * 4 /Users/tiborkiss/devel/workspace/stocks/huba/bin/google_intraday.sh get-from-file /Users/tiborkiss/devel/workspace/stocks/huba/docs/google_intra_fetch/google_intra_fetch.4 5
+#40 8 * * 5 /Users/tiborkiss/devel/workspace/stocks/huba/bin/google_intraday.sh get-from-file /Users/tiborkiss/devel/workspace/stocks/huba/docs/google_intra_fetch/google_intra_fetch.5 5
+
+# Yahoo Earnings fetch
+5 8 * * 1-5 (date; /Users/tiborkiss/devel/workspace/stocks/huba/bin/yahoo_earnings.sh get-traded --store-in-db) >> /Users/tiborkiss/devel/workspace/stocks/huba/logs/yahoo_earnings.log
+5 10 * * 1-5 (date; /Users/tiborkiss/devel/workspace/stocks/huba/bin/yahoo_earnings.sh get-from-file /Users/tiborkiss/devel/workspace/stocks/huba/docs/google_intra_fetch/google_intra_fetch.full --store-in-db) >> /Users/tiborkiss/devel/workspace/stocks/huba/logs/yahoo_earnings.log
+45 7 * * 1-5 (PGPASSWORD=dbSh1t psql -h 192.168.211.31 -U tiborkiss -f /Users/tiborkiss/devel/workspace/stocks/huba/sql/huba_load_company_earnings.sql huba) >> /Users/tiborkiss/devel/workspace/stocks/huba/logs/yahoo_earnings.log

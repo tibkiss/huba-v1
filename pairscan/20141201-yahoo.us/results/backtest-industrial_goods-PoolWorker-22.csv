@@ -1,0 +1,2 @@
+BTDate,Version,Pairs,StartDate,EndDate,BarFreq,BarCount,DayCount,Sharpe,CAGR,CumRet,MaxDD,DDDur,LookbackWindow,EntryZScore,ExitZScore,ZScoreEvalFreq
+2014-12-06 14:27,v1.0-238-ge66b963,MDC_UTX,2008-01-01,2013-12-31,1M,585187,1506,0.14,5.12,34.79,57.13,479,60,1.00,0.00,600
