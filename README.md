@@ -23,6 +23,20 @@ will be released shortly, with similar commentary.
 Finding cointegrated pairs and trading them long/short when they drift too far apart from their expected fair price.
 You can find all the details in Ernie's [first](https://amzn.to/3arFQNz) and [second](https://amzn.to/3OLJf8W) book on the subject.
 
+# What did u do step by step?
+
+1) Purchased minute data from iqfeed, ingested it
+2) Implemented Statistical Arbitrage as discussed in [the book](https://amzn.to/3arFQNz)
+3) Created a liquidity and price filter to filter out non-tradable stocks
+4) Created pairs for each equity sector
+5) Did a bruteforce on half of my data
+6) Picked the best looking pairs, which *seemed* to make sense
+7) Validated them on my other half of the data
+8) Picked the ones which still remained reasonable and [put it](https://github.com/tibkiss/huba-v1/blob/main/config.py) into paper trading
+9) After gaining confidence put the best pairs to live trading
+10) Explored AD-Fuller tests, Hurst exponents, Earnings filters and bunch of other stup
+11) Profit of 6k after 4 years
+12) Moved on to zipline based implementation (huba-v2)
 
 # What have you learned from this?
 
